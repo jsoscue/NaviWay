@@ -70,18 +70,14 @@
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
-
+<script type="module">
+        import { cerrar } from '../Firebase/registrareiniciar.js';
+                // Definición de la función logout en el ámbito global
+                window.logout = async function logout() {
+                  await cerrar(); // Llama a la función de cerrar sesión de registrareiniciar.js
+              }
+      </script>
     <script>
-
-        function logout() {
-            localStorage.setItem('loggedIn', 'false');
-            user.loggedIn = false; // Actualizar la variable user
-            updateAuthButtons(); // Actualizar los botones
-            document.getElementById('dropdown-menu').classList.remove('show'); // Ocultar menú
-
-            // Redirigir a index.html
-            window.location.href = '../inicio/index.html'; 
-        }
 
         // Función para volver a la página anterior
 
