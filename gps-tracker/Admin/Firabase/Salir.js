@@ -10,6 +10,9 @@ const firebaseConfig = {
   appId: "1:35224588554:web:8a44a81de4c5820a2c2af3",
   measurementId: "G-MTB3GZZZ9N"
 };
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 export async function cerrarsesion() {
   signOut(auth)
     .then(() => {
