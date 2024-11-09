@@ -70,26 +70,30 @@ export async function registrar() {
 export async function inicio() {
   const email2 = document.getElementById('email2').value;
   const password2 = document.getElementById('password2').value;
+  
   if (!email2 || !password2) {
     alert('Por favor, ingresa un correo electrónico y una contraseña.');
-    return;
+    return false;
   }
+
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email2, password2);
     console.log('Usuario iniciado:', userCredential.user);
     alert('Inicio de sesión exitoso');
-    
+    return true; // Retornar verdadero si el inicio de sesión fue exitoso
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
     alert('Error al iniciar sesión: ' + error.message);
+    return false; // Retornar falso si el inicio de sesión falló
   }
 }
+
 export async function cerrar() {
   signOut(auth)
     .then(() => {
       localStorage.removeItem('loggedIn');
       localStorage.removeItem('userPhotoURL');
-      window.location.href = '../inicio/index.html'; // Redirect to home page
+      window.location.href = '../index.html'; // Redirect to home page
     })
     .catch((error) => {
       console.error('Error signing out:', error);

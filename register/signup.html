@@ -16,34 +16,17 @@
     <div class="container">
       <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
       <nav class="nav-links">
-        <a href="../inicio/index.html">Home</a>
+        <a href="../index.html">Home</a>
         <a href="../about/about.html">About</a>
         <a href="#">Service</a>
         <a href="#">Contact</a>
       </nav>
       <div class="btn-container">
         <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
-        <button class="btn signin" onclick="openModal()">Sign in</button>
-      </div>
+        <button class="btn signin" onclick="window.location.href='../inicio/signin.html';">Sign in</button>      </div>
     </div>
   </header>
-  <!-- Modal de Sign In -->
-  <div id="signin-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">×</span>
-      <div class="modal-header">
-        <img src="images/logo.png" alt="Naviway Logo" class="modal-logo">
-        <h2>Sign in</h2>
-      </div>
-      <form id="signin-form">
-        <label for="email">Email</label>
-        <input id="email2" type="email" name="email" required>
-        <label for="password">Password</label>
-        <input id="password2" type="password" name="password" required>
-        <button type="submit" class="btn signin">Sign in</button>
-      </form>
-    </div>
-  </div>
+
   <!-- Contenido principal -->
   <div class="content">
     <section class="home-section">

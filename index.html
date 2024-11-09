@@ -16,7 +16,7 @@
   <header class="navbar">
     <div class="container">
       <div class="logo">
-        <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+        <img src="/inicio/images/logo.png" alt="Naviway Logo" class="logo-image">
       </div>
       <nav class="nav-links">
         <a href="index.html">Home</a>
@@ -26,7 +26,7 @@
       </nav>
       <div class="btn-container">
         <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
-        <button class="btn signin" onclick="window.location.href='signin.html';">Sign in</button>
+        <button class="btn signin" onclick="window.location.href='/inicio/signin.html';">Sign in</button>
         <div id="profile-container" style="display: none;">
           <img id="profile-picture" class="profile-picture" src="images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
         </div>
@@ -48,7 +48,7 @@
           </p>
         </div>
         <div class="image">
-          <img src="images/mapa.png" alt="Mapa de seguimiento GPS">
+          <img src="/inicio/images/mapa.png" alt="Mapa de seguimiento GPS">
         </div>
       </div>
     </section>
@@ -65,7 +65,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-logo">
-      <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+      <img src="/inicio/images/logo.png" alt="Naviway Logo" class="footer-logo-image">
     </div>
     <p class="copyright">
       Copyright © 2024 <span>Website</span>. All rights reserved.
@@ -79,7 +79,7 @@
   </footer>
 
   <script type="module">
-    import { cerrarSesion } from '../Firebase/registrareiniciar.js';
+    import { cerrar} from '../Firebase/registrareiniciar.js';
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
     const auth = getAuth();
@@ -125,7 +125,7 @@
     }
 
     async function logout() {
-      await cerrarSesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+      await cerrar(); // Llama a la función de cerrar sesión de registrareiniciar.js
       localStorage.setItem('loggedIn', 'false'); // Marcar al usuario como deslogueado
       localStorage.removeItem('userPhotoURL'); // Eliminar la URL de la foto de perfil
       updateAuthButtons(null); // Actualizar los botones

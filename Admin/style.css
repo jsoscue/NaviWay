@@ -1,12 +1,50 @@
-/* Estilos generales */
+/* General */
 body {
   font-family: 'Mulish', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Pantalla de Bienvenida */
+#welcome-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 1s ease-in-out;
+}
+#welcome-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+/* Animación de Carga */
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #4CAF50;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Contenedor principal */
@@ -58,23 +96,19 @@ body {
   cursor: pointer;
 }
 
-.signup {
-  background-color: white;
-  color: #7bea6d;
+/* Estilos para el perfil del usuario */
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Asegura que la imagen se alinee a la derecha */
 }
 
-.signin {
-  background-color: #7bea6d;
-  color: white;
-}
-
-/* Estilo para la foto de perfil */
-.profile-picture {
+.profile-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  cursor: pointer;
   border: 2px solid #7bea6d;
+  cursor: pointer;
 }
 
 /* Modal */
@@ -149,65 +183,6 @@ body {
   margin-top: 20px;
 }
 
-/* Botón de cerrar */
-.close-button {
-  background: none;
-  border: none;
-  color: #7bea6d;
-  font-size: 28px;
-  cursor: pointer;
-  margin-left: auto;
-}
-
-.close-button:hover {
-  color: #4CAF50;
-}
-
-/* Contenido principal */
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 80px; /* Ajuste para evitar que el contenido quede debajo del menú */
-}
-
-/* Sección Home */
-.home-section {
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.home-section .content-box {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  width: 100%;
-  max-width: 1400px; /* Más alargada hacia los lados */
-}
-
-.home-section .text {
-  flex: 1;
-  padding: 20px;
-}
-
-.home-section .image {
-  flex: 1;
-  padding: 20px;
-}
-
-.home-section img {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 10px;
-}
-
 /* Ajustar estilo del menú desplegable para coincidir con el header */
 #dropdown-menu {
   display: none;
@@ -230,7 +205,6 @@ body {
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
-
 #dropdown-menu a:hover {
   background-color: #4CAF50;  /* Efecto hover coherente */
   color: white;
@@ -256,6 +230,20 @@ body {
 /* Mostrar menú al activarlo */
 #dropdown-menu.show {
   display: block;
+}
+
+/* Ocultar el mapa al inicio */
+#map-container {
+  display: none;
+  padding: 20px;
+}
+
+/* Estilos del Mapa */
+#map {
+  width: 100%;
+  height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #menu-button {
@@ -285,6 +273,46 @@ body {
   display: none;
 }
 
+/* Formulario de Rutas */
+.route-form {
+  margin-top: 20px;
+}
+
+.route-form h3 {
+  margin-bottom: 10px;
+}
+
+.route-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.route-form label {
+  margin-top: 10px;
+}
+
+.route-form input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.route-form .btn {
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.route-form .btn:hover {
+  background-color: #45a049;
+}
+
 /* Footer */
 .footer {
   display: flex;
@@ -293,7 +321,6 @@ body {
   padding: 20px;
   background-color: #212b1e;
   color: #7bea6d;
-  margin-top: auto; /* Asegura que el footer esté pegado al borde inferior */
 }
 
 .footer-logo-image {

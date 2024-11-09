@@ -17,37 +17,21 @@
       <div class="logo">
         <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
       </div>
-    <nav class="nav-links">
-      <a href="../inicio/index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="#">Service</a>
-      <a href="#">Contact</a>
-    </nav>
-    <div class="btn-container">
-      <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
-      <button class="btn signin" onclick="openModal()">Sign in</button>
-    </div>
-  </div>
-  </header>
-
-  <!-- Modal de Sign In -->
-  <div id="signin-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">×</span>
-      <div class="modal-header">
-        <img src="images/logo.png" alt="Naviway Logo" class="modal-logo">
-        <h2>Sign in</h2>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#">Service</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="btn-container">
+        <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+        <button class="btn signin" onclick="window.location.href='../inicio/signin.html';">Sign in</button>
+        <div id="profile-container" style="display: none;">
+          <img id="profile-picture" class="profile-picture" src="images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
+        </div>
       </div>
-      <form>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit" class="btn signin">Sign in</button>
-      
-      </form>
     </div>
-  </div>
+  </header>
 
   <!-- Sección About -->
   <main class="about-section">
@@ -104,34 +88,75 @@
     </div>
   </footer>
 
-  <script>
-    function openModal() {
-      document.getElementById('signin-modal').style.display = 'block';
+  <script type="module">
+    import { cerrarSesion } from '../Firebase/registrareiniciar.js';
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+    const auth = getAuth();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificación de inicio de sesión real
+      onAuthStateChanged(auth, function(user) {
+        if (user) {
+          // Usuario está autenticado
+          localStorage.setItem('loggedIn', 'true');
+          updateAuthButtons(user);
+        } else {
+          // Usuario no está autenticado
+          localStorage.setItem('loggedIn', 'false');
+          updateAuthButtons(null);
+        }
+      });
+
+      // Verificar el estado de inicio de sesión almacenado en localStorage
+      const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+      if (isLoggedIn) {
+        const userPhotoURL = localStorage.getItem('userPhotoURL');
+        updateAuthButtons({ photoURL: userPhotoURL });
+      } else {
+        updateAuthButtons(null);
+      }
+    });
+
+    function updateAuthButtons(user) {
+      if (user) {
+        // Mostrar foto de perfil si está autenticado
+        const profileImg = document.getElementById('profile-picture');
+        profileImg.src = user.photoURL || 'images/user-profile.jpg'; // URL de la foto de perfil del usuario
+        profileImg.style.display = 'block';
+        document.querySelector('.btn.signup').style.display = 'none';
+        document.querySelector('.btn.signin').style.display = 'none';
+      } else {
+        // Mostrar botones de Sign up y Sign in si no ha iniciado sesión
+        document.querySelector('.btn.signup').style.display = 'inline-block';
+        document.querySelector('.btn.signin').style.display = 'inline-block';
+        document.getElementById('profile-picture').style.display = 'none';
+      }
     }
 
-    function closeModal() {
-      document.getElementById('signin-modal').style.display = 'none';
+    async function logout() {
+      await cerrarSesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+      localStorage.setItem('loggedIn', 'false'); // Marcar al usuario como deslogueado
+      localStorage.removeItem('userPhotoURL'); // Eliminar la URL de la foto de perfil
+      updateAuthButtons(null); // Actualizar los botones
+      document.getElementById('dropdown-menu').classList.remove('show'); // Ocultar menú
     }
 
-    document.getElementById('signin-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+    // Manejar clics fuera del menú para cerrarlo
+    window.onclick = function(event) {
+      const menu = document.getElementById('dropdown-menu');
+      if (!event.target.matches('.profile-picture') && !event.target.matches('#dropdown-menu *')) {
+        if (menu.classList.contains('show')) {
+          menu.classList.remove('show');
+        }
+      }
+    };
 
-  // Crear un usuario al azar (esto es solo un ejemplo, en un entorno real se haría en el servidor)
-  const randomUser = {
-    email: 'user@example.com',
-    password: 'password123'
-  };
-
-  // Verificar las credenciales
-  if (email === randomUser.email && password === randomUser.password) {
-    window.location.href = '../map/map.html';
-  } else {
-    alert('Credenciales incorrectas');
-  }
-});
+    // Toggle de menú desplegable
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.classList.toggle('show');
+    }
   </script>
-
 </body>
 </html>

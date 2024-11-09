@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vehículos Monitoreados</title>
+  <title>Administrar Vehículos - Naviway</title>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -14,10 +14,10 @@
     <header class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+                <img src="../images/logo.png" alt="Naviway Logo" class="logo-image">
             </div>
             <nav class="nav-links">
-                <a href="../index.html">Home</a>
+                <a href="../../index.html">Home</a>
                 <a href="../about/about.html">About</a>
                 <a href="#">Service</a>
                 <a href="#">Contact</a>
@@ -25,40 +25,56 @@
             
             <!-- Imagen del Usuario y Menú Desplegable -->
             <div class="user-profile" onclick="toggleDropdown()">
-                <img src="images/user-profile.jpg" alt="User Profile" class="profile-image">
+                <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image">
                 <div id="dropdown-menu" class="dropdown-menu">
-                    <a href="../user/account.html">Account</a>
-                    <a href="vehicles.html">Vehicles</a>
-                    <a href="../map/mapUser.html">Mapa</a>
+                    <a href="../user/accountAdmin.html">Account</a>
+                    <a href="../adminVehicles/admin.html">Vehicles</a>
+                    <a href="../map.html">Mapa</a>
+                    <a href="../rutas/rutas.html">Rutas</a>
                     <button class="logout-button" onclick="logout()">Salir</button>              
+                </div>
             </div>
         </div>
     </header>
 
-  <div class="vehicle-container">
-    <div class="vehicle-info">
-        <a href="vehicle-details.html?placas=ABC123&orden=001">
-          <span class="vehicle-icon">🚌</span>
-          <input type="text" value="Placas: ABC123" disabled>
-          <input type="text" value="No de orden: 001" disabled>
-        </a>
-      </div>
-      
-      <div class="vehicle-info">
-        <a href="vehicle-details.html?placas=XYZ789&orden=002">
-          <span class="vehicle-icon">🚌</span>
-          <input type="text" value="Placas: XYZ789" disabled>
-          <input type="text" value="No de orden: 002" disabled>
-        </a>
-      </div>
-      
+    <!-- Contenido Principal -->
+    <div class="vehicles-container">
+        <div class="vehicle-button">
+            <a href="../formulariosVehiculos/vehicleDetailsAdmin.html">
+                <span class="vehicle-icon">🚌</span>
+                <div class="vehicle-info">
+                    <p>Placas: ABC123</p>
+                    <p>No de orden: 001</p>
+                </div>
+            </a>
+            <div class="vehicle-actions">
+                <button class="edit-button" onclick="location.href='../formulariosVehiculos/editarVehiculos.html?placas=ABC123&orden=001'">Editar</button>
+                <button class="delete-button">Eliminar</button>
+            </div>
+        </div>
+        <div class="vehicle-button">
+            <a href="../formulariosVehiculos/vehicleDetailsAdmin.html">
+                <span class="vehicle-icon">🚌</span>
+                <div class="vehicle-info">
+                    <p>Placas: XYZ789</p>
+                    <p>No de orden: 002</p>
+                </div>
+            </a>
+            <div class="vehicle-actions">
+                <button class="edit-button" onclick="location.href='../formulariosVehiculos/editarVehiculos.html?placas=XYZ789&orden=002'">Editar</button>
+                <button class="delete-button">Eliminar</button>
+            </div>
+        </div>
+        <!-- Agrega más vehículos según sea necesario -->
+    </div>
+
+    <button class="add-button" onclick="location.href='../formulariosVehiculos/agregarVehiculo.html'">Añadir Vehículo Nuevo</button>
     <button class="back-button" onclick="goBack()">Volver</button>
-  </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-logo">
-            <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+            <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image">
         </div>
         <p class="copyright">
             Copyright © 2024 <span>Website</span>. All rights reserved.
@@ -72,7 +88,6 @@
     </footer>
 
     <script>
-
         function logout() {
             localStorage.setItem('loggedIn', 'false');
             user.loggedIn = false; // Actualizar la variable user
@@ -84,7 +99,6 @@
         }
 
         // Función para volver a la página anterior
-
         function goBack() {
             window.history.back();
         } 
