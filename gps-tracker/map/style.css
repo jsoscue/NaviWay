@@ -1,0 +1,295 @@
+body {
+    font-family: 'Mulish', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+/* Pantalla de Bienvenida */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1s ease-in-out;
+}
+#welcome-screen h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Animación de Carga */
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #4CAF50;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+/* Encabezado */
+.navbar {
+    padding: 10px 0;
+    background-color: #212b1e;
+    color: #7bea6d;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo-image {
+    height: 50px;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    color: #7bea6d;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+  
+  .btn-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Asegura que los botones se alineen a la derecha */
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 2px solid #7bea6d;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+/* Estilos para el perfil del usuario */
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Asegura que la imagen se alinee a la derecha */
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #7bea6d;
+    cursor: pointer;
+}
+
+  
+/* Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1001; /* Por encima del header */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  }
+  
+  .modal-content {
+    background-color: #212b1e;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    color: #7bea6d;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .modal-logo {
+    height: 40px;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-content label {
+    margin-top: 10px;
+  }
+  
+  .modal-content input {
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .modal-content .btn {
+    margin-top: 20px;
+  }
+
+  /* Ajustar estilo del menú desplegable para coincidir con el header */
+#dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #212b1e;  /* Mismo fondo que el header */
+  color: #7bea6d;  /* Color de texto consistente */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 10px 0;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+#dropdown-menu a {
+  display: block;
+  color: #7bea6d;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+#dropdown-menu a:hover {
+  background-color: #4CAF50;  /* Efecto hover coherente */
+  color: white;
+}
+
+.logout-button {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  color: #7bea6d;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Mostrar menú al activarlo */
+#dropdown-menu.show {
+  display: block;
+}
+
+/* Ocultar el mapa al inicio */
+#map-container {
+    display: none;
+    padding: 20px;
+}
+
+/* Estilos del Mapa */
+#map {
+    width: 100%;
+    height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#menu-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #212b1e;
+    color: #7bea6d;
+  }
+  
+  .footer-logo-image {
+    height: 40px;
+  }
+  
+  .social-icons a {
+    color: #7bea6d;
+    margin: 0 10px;
+    text-decoration: none;
+  }
