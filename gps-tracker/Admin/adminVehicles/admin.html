@@ -71,13 +71,11 @@
         </div>
     </footer>
 <script type="module">
-        import { cerrar } from '../Firebase/Salir.js';
-                // Definición de la función logout en el ámbito global
-                window.logout = async function logout() {
-                  await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
-              }
-      </script>
-    <script>
+        import { cerrarsesion } from '../Firebase/Salir.js';
+        async function logout() {
+            await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+        }
+</script>
       
         // Función para volver a la página anterior
         function goBack() {
