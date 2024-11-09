@@ -1,0 +1,136 @@
+/* General */
+body {
+    font-family: 'Mulish', sans-serif;
+    background-color: #f2f5fa;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Encabezado */
+.navbar {
+    padding: 10px 0;
+    background-color: #212b1e;
+    color: #7bea6d;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-image {
+    height: 50px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #7bea6d;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+/* Estilo para la foto de perfil */
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #7bea6d;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #212b1e;
+    color: #7bea6d;
+    margin-top: auto; /* Asegura que el footer esté pegado al borde inferior */
+}
+
+.footer-logo-image {
+    height: 40px;
+}
+
+.social-icons a {
+    color: #7bea6d;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* Estilos específicos para editarVehiculos.html */
+.vehicle-details-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px; /* Ajuste para evitar que el contenido quede debajo del menú */
+}
+
+.vehicle-details-container h1 {
+    margin-bottom: 20px;
+}
+
+.vehicle-details-container form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form-column {
+    flex: 1;
+    min-width: 300px;
+    margin: 10px;
+}
+
+.vehicle-details-container label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.vehicle-details-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.vehicle-details-container .btn {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.vehicle-details-container .btn:hover {
+    background-color: #45a049;
+}
