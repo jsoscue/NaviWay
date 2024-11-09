@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naviway</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="module" src="../Firebase/registrareiniciar.js"></script>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="../about/about.html">About</a>
+        <a href="#">Service</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="btn-container">
+        <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+        <button class="btn signin" onclick="window.location.href='signin.html';">Sign in</button>
+        <div id="profile-container" style="display: none;">
+          <img id="profile-picture" class="profile-picture" src="images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <section class="home-section">
+      <div class="content-box">
+        <div class="text">
+          <h2>Seguimiento GPS Inteligente</h2>
+          <p>
+            Naviway es un sistema de seguimiento GPS avanzado que integra geolocalización y datos 
+            de tráfico en tiempo real para la gestión eficiente de rutas. Diseñado para empresas 
+            de transporte, permite monitorear flotas, optimizar trayectos, y responder rápidamente 
+            a incidentes o congestiones, garantizando una movilidad más eficiente.
+          </p>
+        </div>
+        <div class="image">
+          <img src="images/mapa.png" alt="Mapa de seguimiento GPS">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Menú Desplegable -->
+  <div id="dropdown-menu" class="dropdown-menu">
+    <a href="../user/account.html">Account</a>
+    <a href="../vehicles/vehicles.html">Vehicles</a>
+    <a href="../map/map.html">Mapa</a>
+    <button class="logout-button" onclick="logout()">Salir</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+    </div>
+    <p class="copyright">
+      Copyright © 2024 <span>Website</span>. All rights reserved.
+    </p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { cerrarSesion } from '../Firebase/registrareiniciar.js';
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+    const auth = getAuth();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificación de inicio de sesión real
+      onAuthStateChanged(auth, function(user) {
+        if (user) {
+          // Usuario está autenticado
+          localStorage.setItem('loggedIn', 'true');
+          updateAuthButtons(user);
+        } else {
+          // Usuario no está autenticado
+          localStorage.setItem('loggedIn', 'false');
+          updateAuthButtons(null);
+        }
+      });
+
+      // Verificar el estado de inicio de sesión almacenado en localStorage
+      const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+      if (isLoggedIn) {
+        const userPhotoURL = localStorage.getItem('userPhotoURL');
+        updateAuthButtons({ photoURL: userPhotoURL });
+      } else {
+        updateAuthButtons(null);
+      }
+    });
+
+    function updateAuthButtons(user) {
+      if (user) {
+        // Mostrar foto de perfil si está autenticado
+        const profileImg = document.getElementById('profile-picture');
+        profileImg.src = user.photoURL || 'images/user-profile.jpg'; // URL de la foto de perfil del usuario
+        profileImg.style.display = 'block';
+        document.querySelector('.btn.signup').style.display = 'none';
+        document.querySelector('.btn.signin').style.display = 'none';
+      } else {
+        // Mostrar botones de Sign up y Sign in si no ha iniciado sesión
+        document.querySelector('.btn.signup').style.display = 'inline-block';
+        document.querySelector('.btn.signin').style.display = 'inline-block';
+        document.getElementById('profile-picture').style.display = 'none';
+      }
+    }
+
+    async function logout() {
+      await cerrarSesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+      localStorage.setItem('loggedIn', 'false'); // Marcar al usuario como deslogueado
+      localStorage.removeItem('userPhotoURL'); // Eliminar la URL de la foto de perfil
+      updateAuthButtons(null); // Actualizar los botones
+      document.getElementById('dropdown-menu').classList.remove('show'); // Ocultar menú
+    }
+
+    // Manejar clics fuera del menú para cerrarlo
+    window.onclick = function(event) {
+      const menu = document.getElementById('dropdown-menu');
+      if (!event.target.matches('.profile-picture') && !event.target.matches('#dropdown-menu *')) {
+        if (menu.classList.contains('show')) {
+          menu.classList.remove('show');
+        }
+      }
+    };
+
+    // Toggle de menú desplegable
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

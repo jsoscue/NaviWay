@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles del Vehículo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+      <div class="container">
+          <div class="logo">
+              <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+          </div>
+          <nav class="nav-links">
+              <a href="../inicio/index.html">Home</a>
+              <a href="../about/about.html">About</a>
+              <a href="#">Service</a>
+              <a href="#">Contact</a>
+          </nav>
+          
+          <!-- Imagen del Usuario y Menú Desplegable -->
+          <div class="user-profile" onclick="toggleDropdown()">
+              <img src="images/user-profile.jpg" alt="User Profile" class="profile-image">
+              <div id="dropdown-menu" class="dropdown-menu">
+                  <a href="../user/account.html">Account</a>
+                  <a href="vehicles.html">Vehicles</a>
+                  <a href="../map/map.html">Mapa</a>
+                  <button class="logout-button" onclick="logout()">Salir</button>              
+          </div>
+      </div>
+  </header>
+  
+  <div class="vehicle-details-container">
+    <h1>Detalles del Vehículo</h1>
+    <div class="vehicle-info">
+      <span class="vehicle-icon">🚌</span>
+      <input type="text" id="placas" disabled>
+      <input type="text" id="orden" disabled>
+    </div>
+    <div class="additional-info">
+      <h2>Monitoreo en tiempo real</h2>
+      <p>Kilómetros recorridos: <span id="km-recorridos"></span></p>
+      <p>Número de recorridos: <span id="num-recorridos"></span></p>
+      <p>Conductor: <span id="conductor"></span></p>
+      <p>Tel. conductor: <span id="tel-conductor"></span></p>
+      <!-- Más información adicional -->
+    </div>
+    <button class="back-button" onclick="goBack()">Volver</button>
+  </div>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">
+          <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+      </div>
+      <p class="copyright">
+          Copyright © 2024 <span>Website</span>. All rights reserved.
+      </p>
+      <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+  </footer>
+
+  <script>
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const placas = urlParams.get('placas');
+    const orden = urlParams.get('orden');
+
+    // Asignar valores a los campos
+    document.getElementById('placas').value = `Placas: ${placas}`;
+    document.getElementById('orden').value = `No de orden: ${orden}`;
+
+    // Emular información adicional
+    document.getElementById('km-recorridos').textContent = '1200 km';
+    document.getElementById('num-recorridos').textContent = '15';
+    document.getElementById('conductor').textContent = 'Juan Pérez';
+    document.getElementById('tel-conductor').textContent = '123-456-7890';
+
+    function goBack() {
+      window.history.back();
+    }
+
+      // Mostrar/Ocultar el menú desplegable
+      function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.classList.toggle('show');
+  }
+
+  // Cerrar el menú si se hace clic fuera de él
+  window.onclick = function(event) {
+      const menu = document.getElementById('dropdown-menu');
+      if (!event.target.matches('.profile-image')) {
+          if (menu.classList.contains('show')) {
+              menu.classList.remove('show');
+          }
+      }
+  };
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naviway</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="module" src="../Firebase/registrareiniciar.js"></script>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+      <nav class="nav-links">
+        <a href="../inicio/index.html">Home</a>
+        <a href="../about/about.html">About</a>
+        <a href="#">Service</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="btn-container">
+        <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+        <button class="btn signin" onclick="openModal()">Sign in</button>
+      </div>
+    </div>
+  </header>
+  <!-- Modal de Sign In -->
+  <div id="signin-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <div class="modal-header">
+        <img src="images/logo.png" alt="Naviway Logo" class="modal-logo">
+        <h2>Sign in</h2>
+      </div>
+      <form id="signin-form">
+        <label for="email">Email</label>
+        <input id="email2" type="email" name="email" required>
+        <label for="password">Password</label>
+        <input id="password2" type="password" name="password" required>
+        <button type="submit" class="btn signin">Sign in</button>
+      </form>
+    </div>
+  </div>
+  <!-- Contenido principal -->
+  <div class="content">
+    <section class="home-section">
+      <h1 class="form-title">Sign up</h1>
+      <form id="signup-form" class="signup-form">
+        <input type="text" id="name" name="fullname" placeholder="Full name" required>
+        <input type="email" id="email" name="email" placeholder="mail@example.com" required>
+        <div class="phone-group">
+          <select name="country-code">
+            <option value="US">US +1</option>
+            <option value="CO">CO +57</option>
+          </select>
+          <input type="tel" id="phone" name="phone" placeholder="(757) 585-3977" required>
+        </div>
+        <input type="text" id="license" name="id-number" placeholder="Identification number" required>
+        <input type="password" id="passwordS" name="password" placeholder="Password" minlength="8" required>
+        <input type="password" name="confirm-password" placeholder="Confirm password" minlength="8" required>
+        <div class="captcha">
+          <input type="checkbox" id="robot-check" required>
+          <label for="robot-check">I'm not a robot</label>
+        </div>
+        <button type="submit" class="btn signin">Sign up</button>
+      </form>
+    </section>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+    </div>
+    <p class="copyright">
+      Copyright © 2024 <span>Website</span>. All rights reserved.
+    </p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+  <script>
+    function openModal() {
+      document.getElementById('signin-modal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('signin-modal').style.display = 'none';
+    }
+    document.getElementById('signin-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      inicio();
+    });
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      registrar();
+    });
+
+    function openModal() {
+      document.getElementById('signin-modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('signin-modal').style.display = 'none';
+    }
+
+    // Lógica para Sign In
+    document.getElementById('signin-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const randomUser = {
+        email: 'user@example.com',
+        password: 'qwerty69_'
+      };
+
+      if (email === randomUser.email && password === randomUser.password) {
+        window.location.href = '../map/map.html';
+      } else {
+        alert('Credenciales incorrectas');
+      }
+    });
+
+    // Lógica para Sign Up con redirección automática
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita la recarga de la página
+
+      console.log('Usuario registrado:', newUser);
+
+      // Redirección al home después del registro
+      alert('¡Registro exitoso! Redirigiendo al home...');
+      window.location.href = '../inicio/index.html';
+    });
+
+  </script>
+</body>
+</html>

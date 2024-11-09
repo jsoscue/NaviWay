@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehículos Monitoreados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+            </div>
+            <nav class="nav-links">
+                <a href="../inicio/index.html">Home</a>
+                <a href="../about/about.html">About</a>
+                <a href="#">Service</a>
+                <a href="#">Contact</a>
+            </nav>
+            
+            <!-- Imagen del Usuario y Menú Desplegable -->
+            <div class="user-profile" onclick="toggleDropdown()">
+                <img src="images/user-profile.jpg" alt="User Profile" class="profile-image">
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <a href="../user/account.html">Account</a>
+                    <a href="vehicles.html">Vehicles</a>
+                    <a href="../map/map.html">Mapa</a>
+                    <button class="logout-button" onclick="logout()">Salir</button>              
+            </div>
+        </div>
+    </header>
+
+  <div class="vehicle-container">
+    <div class="vehicle-info">
+        <a href="vehicle-details.html?placas=ABC123&orden=001">
+          <span class="vehicle-icon">🚌</span>
+          <input type="text" value="Placas: ABC123" disabled>
+          <input type="text" value="No de orden: 001" disabled>
+        </a>
+      </div>
+      
+      <div class="vehicle-info">
+        <a href="vehicle-details.html?placas=XYZ789&orden=002">
+          <span class="vehicle-icon">🚌</span>
+          <input type="text" value="Placas: XYZ789" disabled>
+          <input type="text" value="No de orden: 002" disabled>
+        </a>
+      </div>
+      
+    <button class="back-button" onclick="goBack()">Volver</button>
+  </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+        </div>
+        <p class="copyright">
+            Copyright © 2024 <span>Website</span>. All rights reserved.
+        </p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script>
+
+        function logout() {
+            localStorage.setItem('loggedIn', 'false');
+            user.loggedIn = false; // Actualizar la variable user
+            updateAuthButtons(); // Actualizar los botones
+            document.getElementById('dropdown-menu').classList.remove('show'); // Ocultar menú
+
+            // Redirigir a index.html
+            window.location.href = '../inicio/index.html'; 
+        }
+
+        // Función para volver a la página anterior
+
+        function goBack() {
+            window.history.back();
+        } 
+        
+        // Mostrar/Ocultar el menú desplegable
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdown-menu');
+            menu.classList.toggle('show');
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        window.onclick = function(event) {
+            const menu = document.getElementById('dropdown-menu');
+            if (!event.target.matches('.profile-image')) {
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
+            }
+        };
+    </script>
+
+</body>
+</html>

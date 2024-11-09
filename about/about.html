@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naviway - About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stylesa.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+      </div>
+    <nav class="nav-links">
+      <a href="../inicio/index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="#">Service</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="btn-container">
+      <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+      <button class="btn signin" onclick="openModal()">Sign in</button>
+    </div>
+  </div>
+  </header>
+
+  <!-- Modal de Sign In -->
+  <div id="signin-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <div class="modal-header">
+        <img src="images/logo.png" alt="Naviway Logo" class="modal-logo">
+        <h2>Sign in</h2>
+      </div>
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" class="btn signin">Sign in</button>
+      
+      </form>
+    </div>
+  </div>
+
+  <!-- Sección About -->
+  <main class="about-section">
+    <section class="about-item">
+      <div class="content-box">
+        <div class="text">
+          <h2>¿Cómo funciona Naviway?</h2>
+          <p>Naviway utiliza una combinación de APIs de Google Maps y Waze para proporcionar información en tiempo real sobre el tráfico y los incidentes en la vía. El sistema permite la gestión eficiente de flotas y la creación de rutas optimizadas, garantizando que los vehículos sigan los trayectos más adecuados según las condiciones actuales del tráfico.</p>
+        </div>
+        <div class="image">
+          <img src="images/nav1.jpg" alt="Descripción gráfica de cómo funciona Naviway">
+        </div>
+      </div>
+    </section>
+
+    <section class="about-item reverse">
+      <div class="content-box">
+        <div class="text">
+          <h2>Datos de Tráfico y Alertas en Tiempo Real</h2>
+          <p>Gracias a la integración con Waze, Naviway recopila información sobre congestiones, accidentes, obras viales y cierres de carreteras reportados por otros usuarios. Esto garantiza que los conductores y gestores estén siempre al tanto de las condiciones de las rutas.</p>
+        </div>
+        <div class="image">
+          <img src="images/nav2.jpg" alt="Ilustración de datos de tráfico y alertas en tiempo real">
+        </div>
+      </div>
+    </section>
+
+    <section class="about-item">
+      <div class="content-box">
+        <div class="text">
+          <h2>Creación y Optimización de Rutas</h2>
+          <p>Usando las APIs de Google Maps, la plataforma calcula las rutas más eficientes en función del estado del tráfico y el tipo de vehículo. Permite seleccionar entre rutas alternativas para minimizar el tiempo de viaje y reducir costos operativos.</p>
+        </div>
+        <div class="image">
+          <img src="images/nav3.jpg" alt="Ilustración sobre la creación y optimización de rutas">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+    </div>
+    <p class="copyright">
+      Copyright © 2024 <span>Website</span>. All rights reserved.
+    </p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById('signin-modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('signin-modal').style.display = 'none';
+    }
+
+    document.getElementById('signin-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Crear un usuario al azar (esto es solo un ejemplo, en un entorno real se haría en el servidor)
+  const randomUser = {
+    email: 'user@example.com',
+    password: 'password123'
+  };
+
+  // Verificar las credenciales
+  if (email === randomUser.email && password === randomUser.password) {
+    window.location.href = '../map/map.html';
+  } else {
+    alert('Credenciales incorrectas');
+  }
+});
+  </script>
+
+</body>
+</html>
