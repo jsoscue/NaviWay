@@ -13,4 +13,4 @@ export async function cerrarsesion() {
       alert('Error signing out. Please try again.');
     });
 }
-window.cerrar = cerrar;
+window.cerrarsesion = cerrarsesion;
