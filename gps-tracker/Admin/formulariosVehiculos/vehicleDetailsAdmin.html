@@ -10,7 +10,7 @@
   <script type="module">
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-    import { cerrar } from '../../Firebase/registrareiniciar.js';
+    import { cerrarsesion } from '../Firabase/Salir.js';
 
     const auth = getAuth();
     const db = getFirestore();
@@ -75,12 +75,10 @@
         document.querySelector('.back-button').addEventListener('click', () => {
             window.history.back();
         });
-
         window.logout = async function logout() {
-            await cerrar();
+            await cerrarsesion();
             localStorage.setItem('loggedIn', 'false');
-            window.location.href = '../inicio/index.html';
-        }
+          }
     });
   </script>
 </head>
