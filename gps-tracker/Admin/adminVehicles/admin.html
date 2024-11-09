@@ -71,10 +71,10 @@
         </div>
     </footer>
 <script type="module">
-        import { cerrar } from '../../Firebase/registrareiniciar.js';
+        import { cerrar } from '../Firebase/Salir.js';
                 // Definición de la función logout en el ámbito global
                 window.logout = async function logout() {
-                  await cerrar(); // Llama a la función de cerrar sesión de registrareiniciar.js
+                  await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
               }
       </script>
     <script>
