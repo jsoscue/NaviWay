@@ -62,15 +62,14 @@
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
+    <script type="module">
+       import { cerrarsesion } from '../Firabase/Salir.js';
+        window.logout = async function logout() {
+            await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+        }
+</script>
 
     <script>
-        function logout() {
-            localStorage.setItem('loggedIn', 'false');
-            user.loggedIn = false;
-            updateAuthButtons();
-            document.getElementById('dropdown-menu').classList.remove('show');
-            window.location.href = '../inicio/index.html';
-        }
 
         function toggleDropdown() {
             const menu = document.getElementById('dropdown-menu');
