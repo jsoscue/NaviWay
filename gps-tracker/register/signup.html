@@ -23,7 +23,8 @@
       </nav>
       <div class="btn-container">
         <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
-        <button class="btn signin" onclick="window.location.href='../inicio/signin.html';">Sign in</button>      </div>
+        <button class="btn signin" onclick="window.location.href='../inicio/signin.html';">Sign in</button>
+      </div>
     </div>
   </header>
 
@@ -52,6 +53,7 @@
       </form>
     </section>
   </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-logo">
@@ -67,19 +69,10 @@
       <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
   </footer>
+
   <script type="module">
-    import { inicio } from '../Firebase/registrareiniciar.js';
-     import { registrar } from '../Firebase/registrareiniciar.js';
-    function openModal() {
-      document.getElementById('signin-modal').style.display = 'block';
-    }
-    function closeModal() {
-      document.getElementById('signin-modal').style.display = 'none';
-    }
-    document.getElementById('signin-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      inicio();
-    });
+    import { registrar, inicio } from '../Firebase/registrareiniciar.js';
+
     document.getElementById('signup-form').addEventListener('submit', function(event) {
       event.preventDefault();
       registrar();
@@ -115,13 +108,14 @@
     document.getElementById('signup-form').addEventListener('submit', function(event) {
       event.preventDefault(); // Evita la recarga de la página
 
+      registrar();
+
       console.log('Usuario registrado:', newUser);
 
       // Redirección al home después del registro
       alert('¡Registro exitoso! Redirigiendo al home...');
       window.location.href = '../inicio/index.html';
     });
-
   </script>
 </body>
 </html>
