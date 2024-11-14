@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadata básica para configurar la codificación de caracteres y el viewport -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naviway</title>
+  <!-- Enlace a la fuente Mulish de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Enlace al archivo de estilos CSS externo -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Enlace a los íconos de Font Awesome para utilizar íconos en el sitio -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Script para Google reCAPTCHA para proteger formularios contra bots -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Script que importa un módulo de JavaScript de Firebase -->
   <script type="module" src="../Firebase/registrareiniciar.js"></script>
 </head>
 <body>
 
-  <!-- Encabezado -->
+  <!-- Encabezado del sitio -->
   <header class="navbar">
     <div class="container">
+      <!-- Logo del sitio -->
       <div class="logo">
         <img src="/inicio/images/logo.png" alt="Naviway Logo" class="logo-image">
       </div>
+      <!-- Enlaces de navegación -->
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="../about/about.html">About</a>
         <a href="#">Service</a>
         <a href="#">Contact</a>
       </nav>
+      <!-- Contenedor de botones de registro e inicio de sesión -->
       <div class="btn-container">
+        <!-- Botón de registro -->
         <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+        <!-- Botón de inicio de sesión -->
         <button class="btn signin" onclick="window.location.href='/inicio/signin.html';">Sign in</button>
+        <!-- Contenedor de la imagen de perfil del usuario, inicialmente oculto -->
         <div id="profile-container" style="display: none;">
           <img id="profile-picture" class="profile-picture" src="images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
         </div>
@@ -34,10 +46,11 @@
     </div>
   </header>
 
-  <!-- Contenido principal -->
+  <!-- Contenido principal del sitio -->
   <div class="content">
     <section class="home-section">
       <div class="content-box">
+        <!-- Sección de texto descriptivo -->
         <div class="text">
           <h2>Seguimiento GPS Inteligente</h2>
           <p>
@@ -47,6 +60,7 @@
             a incidentes o congestiones, garantizando una movilidad más eficiente.
           </p>
         </div>
+        <!-- Sección de imagen descriptiva -->
         <div class="image">
           <img src="/inicio/images/mapa.png" alt="Mapa de seguimiento GPS">
         </div>
@@ -54,7 +68,7 @@
     </section>
   </div>
 
-  <!-- Menú Desplegable -->
+  <!-- Menú desplegable para el perfil del usuario -->
   <div id="dropdown-menu" class="dropdown-menu">
     <a href="../user/account.html">Account</a>
     <a href="../vehicles/vehicles.html">Vehicles</a>
@@ -62,7 +76,7 @@
     <button class="logout-button" onclick="logout()">Salir</button>
   </div>
 
-  <!-- Footer -->
+  <!-- Pie de página del sitio -->
   <footer class="footer">
     <div class="footer-logo">
       <img src="/inicio/images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -79,20 +93,22 @@
   </footer>
 
   <script type="module">
-    import { cerrar} from '../Firebase/registrareiniciar.js';
+    // Importar funciones necesarias de Firebase
+    import { cerrar } from '../Firebase/registrareiniciar.js';
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
     const auth = getAuth();
 
+    // Evento que se ejecuta cuando el DOM está completamente cargado
     document.addEventListener('DOMContentLoaded', function() {
-      // Verificación de inicio de sesión real
+      // Verificación del estado de autenticación del usuario
       onAuthStateChanged(auth, function(user) {
         if (user) {
-          // Usuario está autenticado
+          // Usuario autenticado
           localStorage.setItem('loggedIn', 'true');
           updateAuthButtons(user);
         } else {
-          // Usuario no está autenticado
+          // Usuario no autenticado
           localStorage.setItem('loggedIn', 'false');
           updateAuthButtons(null);
         }
@@ -108,22 +124,24 @@
       }
     });
 
+    // Función para actualizar los botones de autenticación según el estado del usuario
     function updateAuthButtons(user) {
       if (user) {
-        // Mostrar foto de perfil si está autenticado
+        // Mostrar imagen de perfil si el usuario está autenticado
         const profileImg = document.getElementById('profile-picture');
         profileImg.src = user.photoURL || 'images/user-profile.jpg'; // URL de la foto de perfil del usuario
         profileImg.style.display = 'block';
         document.querySelector('.btn.signup').style.display = 'none';
         document.querySelector('.btn.signin').style.display = 'none';
       } else {
-        // Mostrar botones de Sign up y Sign in si no ha iniciado sesión
+        // Mostrar botones de Sign up y Sign in si el usuario no ha iniciado sesión
         document.querySelector('.btn.signup').style.display = 'inline-block';
         document.querySelector('.btn.signin').style.display = 'inline-block';
         document.getElementById('profile-picture').style.display = 'none';
       }
     }
 
+    // Función asincrónica para cerrar sesión
     async function logout() {
       await cerrar(); // Llama a la función de cerrar sesión de registrareiniciar.js
       localStorage.setItem('loggedIn', 'false'); // Marcar al usuario como deslogueado
@@ -142,7 +160,7 @@
       }
     };
 
-    // Toggle de menú desplegable
+    // Función para mostrar/ocultar el menú desplegable
     function toggleDropdown() {
       const menu = document.getElementById('dropdown-menu');
       menu.classList.toggle('show');
