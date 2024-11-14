@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadata básica para la configuración de la página -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalles del Vehículo</title>
+  <!-- Enlace a la fuente Mulish de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Enlace a la hoja de estilos CSS -->
   <link rel="stylesheet" href="style.css">
+  <!-- Enlace a los íconos de Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 <body>
-    <!-- Header -->
+    <!-- Encabezado de la página -->
     <header class="navbar">
       <div class="container">
+          <!-- Logo del sitio web -->
           <div class="logo">
               <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
           </div>
+          <!-- Enlaces de navegación -->
           <nav class="nav-links">
               <a href="../index.html">Home</a>
               <a href="../about/about.html">About</a>
               <a href="#">Service</a>
               <a href="#">Contact</a>
           </nav>
-          
-          <!-- Imagen del Usuario y Menú Desplegable -->
+          <!-- Imagen de perfil del usuario y menú desplegable -->
           <div class="user-profile" onclick="toggleDropdown()">
               <img src="images/user-profile.jpg" alt="User Profile" class="profile-image">
               <div id="dropdown-menu" class="dropdown-menu">
                   <a href="../user/account.html">Account</a>
                   <a href="vehicles.html">Vehicles</a>
                   <a href="../map/mapUser.html">Mapa</a>
-                  <button class="logout-button" onclick="logout()">Salir</button>              
+                  <button class="logout-button" onclick="logout()">Salir</button>
+              </div>
           </div>
       </div>
   </header>
   
+  <!-- Contenedor de detalles del vehículo -->
   <div class="vehicle-details-container">
     <h1>Detalles del Vehículo</h1>
     <div class="vehicle-info">
@@ -53,7 +59,7 @@
     <button class="back-button" onclick="goBack()">Volver</button>
   </div>
   
-    <!-- Footer -->
+    <!-- Pie de página -->
     <footer class="footer">
       <div class="footer-logo">
           <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -68,14 +74,17 @@
           <a href="#"><i class="fab fa-youtube"></i></a>
       </div>
   </footer>
-  <script type="module">
-        import { cerrar } from '../Firebase/registrareiniciar.js';
-                // Definición de la función logout en el ámbito global
-                window.logout = async function logout() {
-                  await cerrar(); // Llama a la función de cerrar sesión de registrareiniciar.js
-              }
-      </script>
 
+  <!-- Script para cerrar sesión usando Firebase -->
+  <script type="module">
+    import { cerrar } from '../Firebase/registrareiniciar.js';
+    // Definición de la función logout en el ámbito global
+    window.logout = async function logout() {
+      await cerrar(); // Llama a la función de cerrar sesión de registrareiniciar.js
+    }
+  </script>
+
+  <!-- Script para manejo de UI y obtención de parámetros URL -->
   <script>
     // Obtener parámetros de la URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -92,25 +101,26 @@
     document.getElementById('conductor').textContent = 'Juan Pérez';
     document.getElementById('tel-conductor').textContent = '123-456-7890';
 
+    // Función para regresar a la página anterior
     function goBack() {
       window.history.back();
     }
 
-      // Mostrar/Ocultar el menú desplegable
-      function toggleDropdown() {
+    // Mostrar/Ocultar el menú desplegable
+    function toggleDropdown() {
       const menu = document.getElementById('dropdown-menu');
       menu.classList.toggle('show');
-  }
+    }
 
-  // Cerrar el menú si se hace clic fuera de él
-  window.onclick = function(event) {
+    // Cerrar el menú si se hace clic fuera de él
+    window.onclick = function(event) {
       const menu = document.getElementById('dropdown-menu');
       if (!event.target.matches('.profile-image')) {
           if (menu.classList.contains('show')) {
               menu.classList.remove('show');
           }
       }
-  };
+    };
   </script>
 </body>
 </html>
