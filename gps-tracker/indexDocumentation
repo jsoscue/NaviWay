@@ -1,1 +1,65 @@
+Descripción General
+Este código HTML y JavaScript crea una página web de inicio para el sitio Naviway. 
+La página incluye elementos de navegación, un área de contenido principal con información sobre el servicio, un menú desplegable para el perfil de usuario 
+y un pie de página con enlaces a redes sociales.
 
+Desglose del Código
+Encabezado (<head>):
+
+Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea bien en dispositivos móviles.
+
+Título: Define el título de la página como "Naviway".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish".
+
+Archivo CSS externo (styles.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Scripts:
+
+Google reCAPTCHA: Protege los formularios contra bots.
+
+Módulo de JavaScript de Firebase: Importa funciones específicas para el manejo del registro y reinicio de usuarios.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo: Imagen que representa el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar a diferentes secciones del sitio (Home, About, Service, Contact).
+
+Botones de Registro e Inicio de Sesión: Permiten a los usuarios registrarse o iniciar sesión. También incluye un contenedor para la imagen de perfil del usuario que se muestra si el usuario está autenticado.
+
+Contenido Principal (<div class="content">):
+
+Describe el servicio de Naviway, destacando su capacidad para el seguimiento GPS, gestión de rutas y respuesta rápida a incidentes.
+
+Incluye una imagen representativa de un mapa de seguimiento GPS.
+
+Menú Desplegable (<div id="dropdown-menu">):
+
+Aparece cuando el usuario hace clic en su imagen de perfil.
+
+Contiene enlaces a la cuenta del usuario, vehículos, mapa y un botón para cerrar sesión.
+
+Pie de Página (<footer>):
+
+Incluye el logotipo de Naviway y enlaces a las redes sociales.
+
+JavaScript:
+
+Autenticación de Firebase:
+
+Verifica el estado de autenticación del usuario al cargar la página (DOMContentLoaded).
+
+Actualiza la interfaz de usuario para mostrar la imagen de perfil si el usuario está autenticado, o los botones de "Sign up" y "Sign in" si no lo está.
+
+La función logout permite a los usuarios cerrar sesión, y la función toggleDropdown muestra/oculta el menú desplegable cuando se hace clic en la imagen de perfil.
+
+Manejo del Menú Desplegable:
+
+Oculta el menú desplegable si se hace clic fuera de él.
