@@ -1,0 +1,59 @@
+Descripción General
+Este código HTML crea una página web que presenta detalles específicos de un vehículo. La página incluye una cabecera con enlaces de navegación, detalles del vehículo obtenidos de parámetros de la URL, información adicional simulada sobre el vehículo, y un pie de página con enlaces a redes sociales. También hay funcionalidad para un menú desplegable asociado con la imagen de perfil del usuario y la opción de cerrar sesión usando Firebase.
+
+Desglose del Código
+Encabezado (<head>):
+
+Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Detalles del Vehículo".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish".
+
+Archivo CSS externo (style.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar a diferentes secciones del sitio (Home, About, Service, Contact).
+
+Imagen de Perfil y Menú Desplegable:
+
+Imagen de perfil del usuario que, al hacer clic, muestra un menú desplegable con opciones de cuenta, vehículos, mapa y un botón para cerrar sesión.
+
+Contenedor de Detalles del Vehículo (<div class="vehicle-details-container">):
+
+Información del Vehículo: Muestra detalles específicos del vehículo como las placas y el número de orden, obtenidos de los parámetros de la URL.
+
+Información Adicional: Muestra datos simulados sobre el vehículo, tales como kilómetros recorridos, número de recorridos, conductor y teléfono del conductor.
+
+Botón para Volver: Permite al usuario regresar a la página anterior.
+
+Pie de Página (<footer>):
+
+Incluye el logotipo de Naviway y enlaces a redes sociales.
+
+Scripts:
+
+Manejo de Cierre de Sesión con Firebase:
+
+Importa la función cerrar desde un módulo de Firebase (registrareiniciar.js) y define una función global logout para cerrar sesión.
+
+Manejo de la Interfaz de Usuario:
+
+Obtiene los parámetros de la URL para mostrar los detalles del vehículo.
+
+Asigna valores a los campos correspondientes en la página.
+
+Muestra información adicional simulada.
+
+Define la función goBack para regresar a la página anterior.
+
+Define las funciones toggleDropdown y un evento onclick global para manejar la visualización del menú desplegable.
