@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadatos básicos para la configuración de la página -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naviway</title>
+  <!-- Enlace a la fuente Mulish de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Enlace a la hoja de estilos CSS -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Enlace a los íconos de Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Script de Google reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Importar script de Firebase para registro e inicio de sesión -->
   <script type="module" src="../Firebase/registrareiniciar.js"></script>
 </head>
 <body>
-  <!-- Header / Navbar -->
+  <!-- Encabezado / Barra de navegación -->
   <header class="navbar">
     <div class="container">
+      <!-- Logo del sitio web -->
       <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+      <!-- Enlaces de navegación -->
       <nav class="nav-links">
         <a href="../index.html">Home</a>
         <a href="../about/about.html">About</a>
         <a href="#">Service</a>
         <a href="#">Contact</a>
       </nav>
+      <!-- Botones de registro e inicio de sesión -->
       <div class="btn-container">
         <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
         <button class="btn signin" onclick="window.location.href='../inicio/signin.html';">Sign in</button>
@@ -32,6 +41,7 @@
   <div class="content">
     <section class="home-section">
       <h1 class="form-title">Sign up</h1>
+      <!-- Formulario de registro -->
       <form id="signup-form" class="signup-form">
         <input type="text" id="name" name="fullname" placeholder="Full name" required>
         <input type="email" id="email" name="email" placeholder="mail@example.com" required>
@@ -54,7 +64,7 @@
     </section>
   </div>
 
-  <!-- Footer -->
+  <!-- Pie de página -->
   <footer class="footer">
     <div class="footer-logo">
       <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -70,6 +80,7 @@
     </div>
   </footer>
 
+  <!-- Script para manejar el registro de usuarios -->
   <script type="module"> 
     import { registrar } from '../Firebase/registrareiniciar.js'; 
     document.getElementById('signup-form').addEventListener('submit', function(event) {
@@ -79,3 +90,4 @@
   </script>
 </body>
 </html>
+
