@@ -1,5 +1,7 @@
 Descripción General
-Este código HTML crea una página web que presenta detalles específicos de un vehículo. La página incluye una cabecera con enlaces de navegación, detalles del vehículo obtenidos de parámetros de la URL, información adicional simulada sobre el vehículo, y un pie de página con enlaces a redes sociales. También hay funcionalidad para un menú desplegable asociado con la imagen de perfil del usuario y la opción de cerrar sesión usando Firebase.
+Este código HTML crea una página web que presenta detalles específicos de un vehículo. La página incluye una cabecera con enlaces de navegación, 
+detalles del vehículo obtenidos de parámetros de la URL, información adicional simulada sobre el vehículo, y un pie de página con enlaces a redes sociales. 
+También hay funcionalidad para un menú desplegable asociado con la imagen de perfil del usuario y la opción de cerrar sesión usando Firebase.
 
 Desglose del Código
 Encabezado (<head>):
