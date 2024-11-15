@@ -70,51 +70,11 @@
     </div>
   </footer>
 
-  <script type="module">
-    import { registrar, inicio } from '../Firebase/registrareiniciar.js';
-
+  <script type="module"> 
+    import { registrar } from '../Firebase/registrareiniciar.js'; 
     document.getElementById('signup-form').addEventListener('submit', function(event) {
       event.preventDefault();
       registrar();
-    });
-
-    function openModal() {
-      document.getElementById('signin-modal').style.display = 'block';
-    }
-
-    function closeModal() {
-      document.getElementById('signin-modal').style.display = 'none';
-    }
-
-    // Lógica para Sign In
-    document.getElementById('signin-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      const randomUser = {
-        email: 'user@example.com',
-        password: 'qwerty69_'
-      };
-
-      if (email === randomUser.email && password === randomUser.password) {
-        window.location.href = '../map/map.html';
-      } else {
-        alert('Credenciales incorrectas');
-      }
-    });
-
-    // Lógica para Sign Up con redirección automática
-    document.getElementById('signup-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Evita la recarga de la página
-
-      registrar();
-
-      console.log('Usuario registrado:', newUser);
-
-      // Redirección al home después del registro
-      alert('¡Registro exitoso! Redirigiendo al home...');
-      window.location.href = '../index.html';
     });
   </script>
 </body>
