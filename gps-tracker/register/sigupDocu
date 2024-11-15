@@ -1,0 +1,73 @@
+Descripción General
+Este código HTML crea una página web para Naviway, una plataforma que parece estar diseñada para el registro de usuarios. 
+La página incluye una barra de navegación, un formulario de registro en la sección principal y un pie de página con enlaces a redes sociales. 
+También incorpora funcionalidades como Google reCAPTCHA para evitar bots y scripts de Firebase para manejar el registro de usuarios.
+
+Desglose del Código
+Encabezado (<head>):
+
+Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Naviway".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish".
+
+Archivo CSS externo (styles.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Scripts:
+
+Google reCAPTCHA: Añade protección anti-bot al formulario.
+
+Firebase: Importa el módulo registrareiniciar.js para manejar el registro y la autenticación.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo del Sitio: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar por diferentes secciones del sitio (Home, About, Service, Contact).
+
+Botones de Registro e Inicio de Sesión: Facilita el registro y el inicio de sesión de usuarios.
+
+Contenido Principal (<div class="content">):
+
+Formulario de Registro:
+
+Título del Formulario: Indica que el formulario es para "Sign up".
+
+Campos del Formulario:
+
+Nombre Completo: Campo de entrada para el nombre completo del usuario.
+
+Correo Electrónico: Campo de entrada para el correo electrónico del usuario.
+
+Teléfono: Campo de entrada para el número de teléfono del usuario, con un selector de código de país.
+
+Número de Identificación: Campo de entrada para el número de identificación del usuario.
+
+Contraseña: Campos de entrada para la contraseña y su confirmación.
+
+Captcha: Verificación "I'm not a robot" para evitar envíos automáticos.
+
+Botón de Envío: Botón para enviar el formulario y completar el registro.
+
+Pie de Página (<footer>):
+
+Logo del Pie de Página: Muestra el logotipo de Naviway.
+
+Derechos de Autor: Indica los derechos de autor del sitio web.
+
+Íconos Sociales: Enlaces a las redes sociales (Facebook, Instagram, LinkedIn, YouTube).
+
+Scripts:
+
+Manejo del Registro de Usuarios:
+
+Importar Función registrar: Importa la función registrar del módulo registrareiniciar.js.
+
+Evento de Envío del Formulario: Agrega un evento submit al formulario de registro que llama a la función registrar para manejar el proceso de registro.
