@@ -1,0 +1,56 @@
+Descripción General
+Este código HTML crea una página web que lista vehículos monitoreados y proporciona detalles básicos sobre cada uno. 
+La página incluye una cabecera con enlaces de navegación, un contenedor con información sobre los vehículos, 
+y un pie de página con enlaces a redes sociales. También hay funcionalidad para un menú desplegable asociado con la imagen de perfil del usuario y 
+la opción de cerrar sesión usando Firebase.
+
+Desglose del Código
+Encabezado (<head>):
+
+Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Vehículos Monitoreados".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish".
+
+Archivo CSS externo (style.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar a diferentes secciones del sitio (Home, About, Service, Contact).
+
+Imagen de Perfil y Menú Desplegable:
+
+Imagen de perfil del usuario que, al hacer clic, muestra un menú desplegable con opciones de cuenta, vehículos, mapa y un botón para cerrar sesión.
+
+Contenedor de Vehículos (<div class="vehicle-container">):
+
+Información del Vehículo: Cada vehículo muestra sus placas y número de orden en campos de texto deshabilitados. Los detalles del vehículo son accesibles a través de enlaces que incluyen parámetros en la URL (vehicle-details.html?placas=...&orden=...).
+
+Botón para Volver: Permite al usuario regresar a la página anterior.
+
+Pie de Página (<footer>):
+
+Incluye el logotipo de Naviway y enlaces a redes sociales.
+
+Scripts:
+
+Manejo de Cierre de Sesión con Firebase:
+
+Importa la función cerrar desde un módulo de Firebase (registrareiniciar.js) y define una función global logout para cerrar sesión.
+
+Manejo de la Interfaz de Usuario:
+
+Define la función goBack para regresar a la página anterior.
+
+Define la función toggleDropdown para mostrar/ocultar el menú desplegable.
+
+Define un evento onclick global para cerrar el menú si se hace clic fuera de él.
