@@ -1,0 +1,85 @@
+Descripción General
+Este código HTML crea una página web denominada "Naviway", diseñada para mostrar la cuenta del usuario. La página incluye una cabecera con enlaces de navegación, 
+un contenedor principal que muestra la información del perfil del usuario, y un pie de página con enlaces a redes sociales. 
+También integra funcionalidades de autenticación y gestión de datos del usuario utilizando Firebase.
+
+Desglose del Código
+Encabezado (<head>):
+
+Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Naviway".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish".
+
+Archivo CSS externo (account.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Scripts:
+
+Importa el módulo registrareiniciar.js de Firebase para manejar la autenticación y cierre de sesión.
+
+Script Principal:
+
+Firebase Auth y Firestore: Importa funciones de autenticación (getAuth, onAuthStateChanged) y Firestore (getFirestore, doc, getDoc).
+
+Función de Cierre de Sesión: Define la función global logout para manejar el cierre de sesión llamando a cerrar del módulo registrareiniciar.js.
+
+Carga de Datos del Usuario:
+
+Al cargar la página (DOMContentLoaded), verifica si el usuario está autenticado (onAuthStateChanged).
+
+Si el usuario está autenticado, obtiene y muestra los datos del usuario desde Firestore.
+
+Si no está autenticado, redirige a la página de inicio (index.html).
+
+Funciones para Manejo del Menú Desplegable:
+
+toggleDropdown: Muestra o oculta el menú desplegable.
+
+Evento onclick global: Cierra el menú si se hace clic fuera de él.
+
+Función goBack: Permite regresar a la página anterior.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar a diferentes secciones del sitio (Home, About, Service, Contact).
+
+Imagen de Perfil y Menú Desplegable:
+
+Imagen de perfil del usuario que, al hacer clic, muestra un menú desplegable con opciones de cuenta, vehículos, mapa y un botón para cerrar sesión.
+
+Contenedor Principal del Contenido (<div class="main-content">):
+
+Contenedor de Perfil:
+
+Imagen de Perfil: Muestra una imagen de perfil del usuario.
+
+Información del Perfil: Muestra y permite editar campos de nombre completo, correo electrónico, teléfono y número de identificación del usuario.
+
+Botón para Volver: Permite regresar a la página anterior.
+
+Pie de Página (<footer>):
+
+Incluye el logotipo de Naviway y enlaces a redes sociales.
+
+Scripts:
+
+Manejo de Cierre de Sesión con Firebase:
+
+Importa la función cerrar desde un módulo de Firebase (registrareiniciar.js) y define una función global logout para cerrar sesión.
+
+Manejo de la Interfaz de Usuario:
+
+Define la función goBack para regresar a la página anterior.
+
+Define la función toggleDropdown para mostrar/ocultar el menú desplegable.
+
+Define un evento onclick global para cerrar el menú si se hace clic fuera de él.
