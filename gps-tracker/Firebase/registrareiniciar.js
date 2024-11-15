@@ -52,7 +52,7 @@ export async function registrar() {
 
     console.log("Datos guardados en Firestore");
     alert("Usuario registrado exitosamente y datos guardados en Firestore.");
-    window.location.href = '../inicio/index.html';  
+    window.location.href = '../index.html';  
   } catch (error) {
     console.error("Error al registrar el usuario:", error);
     if (error.code === 'auth/email-already-in-use') {
