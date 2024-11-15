@@ -106,7 +106,6 @@
         if (user) {
           // Usuario autenticado
           localStorage.setItem('loggedIn', 'true');
-          localStorage.setItem('userPhotoURL', user.photoURL || 'images/user-profile.jpg');
           updateAuthButtons(user);
         } else {
           // Usuario no autenticado
@@ -134,12 +133,11 @@
         profileImg.style.display = 'block';
         document.querySelector('.btn.signup').style.display = 'none';
         document.querySelector('.btn.signin').style.display = 'none';
-        document.getElementById('profile-container').style.display = 'block';
       } else {
         // Mostrar botones de Sign up y Sign in si el usuario no ha iniciado sesión
         document.querySelector('.btn.signup').style.display = 'inline-block';
         document.querySelector('.btn.signin').style.display = 'inline-block';
-        document.getElementById('profile-container').style.display = 'none';
+        document.getElementById('profile-picture').style.display = 'none';
       }
     }
 
@@ -170,4 +168,3 @@
   </script>
 </body>
 </html>
-
