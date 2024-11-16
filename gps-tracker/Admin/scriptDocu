@@ -1,0 +1,39 @@
+Descripción General
+Este código JavaScript se encarga de crear una interfaz de mapa interactivo para monitorear en tiempo real el movimiento de un bus utilizando la API de Google Maps. Inicializa un mapa centrado en coordenadas específicas, añade una capa de tráfico y posiciona un marcador que representa el bus. El marcador puede mostrar información detallada del vehículo al hacer clic en él.
+
+Desglose del Código
+Importaciones y Variables Globales:
+
+saveLocationData: Importa la función desde el módulo Firebase/realtime.js.
+
+Variables Globales: Define variables para el mapa (map), el marcador (marker), la capa de tráfico (trafficLayer), el servicio de direcciones (directionsService), y el renderizador de direcciones (directionsRenderer), así como variables para la simulación de la ruta.
+
+Función initMap:
+
+Propósito: Inicializa el mapa de Google Maps.
+
+Descripción: Crea un nuevo mapa centrado en coordenadas específicas, añade una capa de tráfico, y crea un marcador que representa el bus con un icono específico. Configura un servicio de direcciones y un renderizador de direcciones. Añade un listener al marcador para mostrar información del vehículo al hacer clic en él. Verifica si hay una ruta en la URL y la muestra si está disponible.
+
+Función calculateAndDisplayRoute:
+
+Propósito: Calcula y muestra la ruta del bus en el mapa.
+
+Descripción: Utiliza el servicio de direcciones de Google Maps para calcular una ruta desde un punto de inicio hasta un destino, y muestra la ruta en el mapa mediante el renderizador de direcciones. Guarda los puntos de la ruta para la simulación del movimiento del bus.
+
+Función startSimulation:
+
+Propósito: Simula el movimiento del bus a lo largo de la ruta.
+
+Descripción: Utiliza setInterval para mover el marcador a lo largo de los puntos de la ruta a intervalos regulares (2 segundos). Actualiza la posición del marcador en el mapa, guarda los datos de ubicación llamando a saveLocationData, y simula datos del bus como velocidad y paradas.
+
+Función simulateData:
+
+Propósito: Simula los datos del bus durante la simulación.
+
+Descripción: Genera valores aleatorios para la velocidad, el uso del cinturón de seguridad, la duración de las paradas, las frenadas bruscas y los desvíos de ruta. Actualiza la cantidad de kilómetros recorridos en base a la velocidad simulada.
+
+Manejo de Pantalla de Bienvenida:
+
+Propósito: Muestra el mapa después de una pantalla de bienvenida.
+
+Descripción: Al cargar la página, muestra una pantalla de bienvenida durante 3 segundos, luego oculta esta pantalla y muestra el contenedor del mapa, iniciando la función initMap.
