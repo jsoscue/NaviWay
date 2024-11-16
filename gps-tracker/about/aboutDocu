@@ -1,0 +1,81 @@
+Descripción General
+Este código HTML crea una página web informativa sobre Naviway, destacando cómo funciona el servicio, la integración de datos de tráfico en tiempo real y la optimización de rutas.
+La página incluye un encabezado con enlaces de navegación, una sección principal con información detallada sobre el servicio, y un pie de página con enlaces a redes sociales.
+También gestiona la autenticación de usuarios mediante Firebase.
+
+Desglose del Código
+Encabezado (<head>):
+
+Metadatos Básicos: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Naviway - About".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish" para la tipografía.
+
+Archivo CSS externo (stylesa.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Script de Google reCAPTCHA: Añade protección anti-bot al formulario.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo del Sitio: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar por diferentes secciones del sitio (Home, About, Service, Contact).
+
+Botones de Registro e Inicio de Sesión: Facilita el registro y el inicio de sesión de usuarios. Incluye un contenedor de perfil que se muestra solo si el usuario está autenticado.
+
+Sección Principal (<main class="about-section">):
+
+Primer Bloque (<section class="about-item">):
+
+Descripción del Servicio: Explica cómo Naviway utiliza APIs de Google Maps y Waze para proporcionar información en tiempo real sobre tráfico e incidentes.
+
+Imagen Descriptiva: Muestra una imagen que ilustra cómo funciona el servicio.
+
+Segundo Bloque (<section class="about-item reverse">):
+
+Datos de Tráfico y Alertas en Tiempo Real: Detalla cómo Naviway integra información de Waze sobre congestiones, accidentes y obras viales.
+
+Imagen Descriptiva: Muestra una imagen que ilustra la recopilación de datos de tráfico.
+
+Tercer Bloque (<section class="about-item">):
+
+Creación y Optimización de Rutas: Describe cómo Naviway utiliza APIs de Google Maps para calcular rutas eficientes.
+
+Imagen Descriptiva: Muestra una imagen que ilustra la optimización de rutas.
+
+Pie de Página (<footer class="footer">):
+
+Logo del Pie de Página: Muestra el logotipo de Naviway.
+
+Derechos de Autor: Indica los derechos de autor del sitio web.
+
+Íconos Sociales: Enlaces a las redes sociales (Facebook, Instagram, LinkedIn, YouTube).
+
+Scripts para Manejo de Autenticación y Sesión de Usuario:
+
+Importación de Firebase:
+
+Importar Funciones: Importa funciones de autenticación (getAuth, onAuthStateChanged) de Firebase.
+
+Inicialización de Firebase: Inicializa la instancia de auth para manejar la autenticación de usuarios.
+
+Manejo del Estado de Sesión:
+
+Verificación de Autenticación: Utiliza onAuthStateChanged para verificar si el usuario está autenticado y actualizar la interfaz en consecuencia.
+
+Actualizar Botones de Autenticación: Función updateAuthButtons que muestra la foto de perfil del usuario autenticado o los botones de registro/inicio de sesión si no está autenticado.
+
+Cierre de Sesión: Función logout que cierra la sesión del usuario, actualiza el estado de localStorage y oculta el menú desplegable.
+
+Manejo del Menú Desplegable:
+
+Función toggleDropdown: Muestra u oculta el menú desplegable.
+
+Evento onclick Global: Cierra el menú desplegable si se hace clic fuera de él.
