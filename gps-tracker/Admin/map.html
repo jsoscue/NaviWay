@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos básicos para la configuración de la página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naviway-Map</title>
+    <!-- Enlace a la fuente Mulish de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Enlace a los íconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Script para la API de Google Maps -->
     <script 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ7dalT8NlxdLugYJABvkIQZ2BrPD0tug&callback=initMap" 
         async defer>
@@ -14,17 +19,21 @@
 </head>
 <body>
 
+    <!-- Encabezado de la página -->
     <header class="navbar">
         <div class="container">
+            <!-- Logotipo de Naviway -->
             <div class="logo">
                 <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
             </div>
+            <!-- Enlaces de navegación -->
             <nav class="nav-links">
                 <a href="../index.html">Home</a>
                 <a href="../about/about.html">About</a>
                 <a href="#">Service</a>
                 <a href="#">Contact</a>
             </nav>
+            <!-- Imagen de perfil del usuario y menú desplegable -->
             <div class="user-profile" onclick="toggleDropdown()">
                 <img src="./images/user-profile.jpg" alt="User Profile" class="profile-image">
                 <div id="dropdown-menu" class="dropdown-menu">
@@ -38,16 +47,19 @@
         </div>
     </header>
 
+    <!-- Pantalla de bienvenida -->
     <div id="welcome-screen">
         <h1>Bienvenido a <span class="highlight">Naviway</span></h1>
         <div class="loader"></div>
     </div>
 
+    <!-- Contenedor del mapa -->
     <div id="map-container">
         <h2>Monitoreo en Tiempo Real</h2>
         <div id="map"></div>
     </div>
 
+    <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="./images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -63,13 +75,14 @@
         </div>
     </footer>
 
-    <!-- Definimos toggleDropdown fuera del bloque de módulo -->
+    <!-- Script para manejar el menú desplegable -->
     <script>
         function toggleDropdown() {
             const menu = document.getElementById('dropdown-menu');
             menu.classList.toggle('show');
         }
 
+        // Cerrar el menú desplegable si se hace clic fuera de él
         window.onclick = function(event) {
             const menu = document.getElementById('dropdown-menu');
             if (!event.target.matches('.profile-image')) {
@@ -80,16 +93,18 @@
         };
     </script>
 
+    <!-- Script para inicializar el mapa y manejar la autenticación -->
     <script type="module">
         import { cerrar } from '../Firebase/registrareiniciar.js';
 
+        // Inicialización del mapa de Google Maps
         function initMap() {
             const map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8
+                center: {lat: -34.397, lng: 150.644}, // Coordenadas iniciales del mapa
+                zoom: 8 // Nivel de zoom del mapa
             });
             const trafficLayer = new google.maps.TrafficLayer();
-            trafficLayer.setMap(map);
+            trafficLayer.setMap(map); // Activa la capa de tráfico en el mapa
         }
 
         // Definición de logout como función asíncrona
@@ -101,6 +116,7 @@
         window.logout = logout;
     </script>
     
+    <!-- Script adicional -->
     <script src="./script.js" type="module"></script>
 
 
