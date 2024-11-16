@@ -1,0 +1,59 @@
+Descripción General
+Este código HTML crea una página web llamada Naviway que permite a los usuarios administrar sus cuentas. La página incluye una barra de navegación, un formulario para actualizar la información del perfil, y un pie de página con enlaces a redes sociales. También gestiona la autenticación y el cierre de sesión de usuarios mediante Firebase.
+
+Desglose del Código
+Encabezado (<head>):
+
+Metadatos Básicos: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Naviway".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish" para la tipografía.
+
+Archivo CSS externo (account.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Script de Firebase: Importa un script de Firebase para manejar la autenticación y el cierre de sesión.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo del Sitio: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar por diferentes secciones del sitio (Home, About, Service, Contact).
+
+Imagen de Perfil y Menú Desplegable: Muestra la imagen de perfil del usuario, que al hacer clic, despliega un menú con opciones de cuenta, vehículos, mapa, rutas y un botón para cerrar sesión.
+
+Contenedor Principal del Contenido (<div class="main-content">):
+
+Formulario de Perfil:
+
+Imagen de Perfil: Muestra una imagen de perfil del usuario.
+
+Información del Perfil: Campos de entrada para actualizar el nombre completo, correo electrónico, número de teléfono y número de identificación del usuario.
+
+Botón Volver: Permite regresar a la página anterior.
+
+Pie de Página (<footer>):
+
+Logo del Pie de Página: Muestra el logotipo de Naviway.
+
+Derechos de Autor: Indica los derechos de autor del sitio web.
+
+Íconos Sociales: Enlaces a las redes sociales (Facebook, Instagram, LinkedIn, YouTube).
+
+Scripts para Manejar la Autenticación y la Interfaz:
+
+Función logout: Maneja el cierre de sesión del usuario, actualiza los botones de autenticación y redirige a la página de inicio.
+
+Función toggleDropdown: Muestra u oculta el menú desplegable.
+
+Evento onclick Global: Cierra el menú desplegable si se hace clic fuera de él.
+
+Función goBack: Permite regresar a la página anterior.
+
+Función initMap: Inicializa el mapa de Google Maps y añade una capa de tráfico.
