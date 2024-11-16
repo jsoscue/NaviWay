@@ -1,0 +1,76 @@
+Descripción General
+Este código JavaScript se utiliza para gestionar la autenticación y el registro de usuarios en una aplicación web utilizando Firebase. 
+Se encarga de registrar nuevos usuarios, iniciar sesión con usuarios existentes y cerrar sesión. Además, almacena los datos de los usuarios en Firestore.
+
+Desglose del Código
+Importaciones desde Firebase:
+
+initializeApp: Importa la función para inicializar la aplicación de Firebase con la configuración del proyecto.
+
+getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut: Importa las funciones para manejar la autenticación de usuarios.
+
+getFirestore, setDoc, doc: Importa las funciones para manejar la base de datos Firestore.
+
+Configuración de Firebase (firebaseConfig):
+
+Contiene las claves y detalles específicos del proyecto Firebase necesarios para conectar y usar los servicios de Firebase.
+
+Inicialización de Firebase:
+
+initializeApp(firebaseConfig): Inicializa la aplicación de Firebase con la configuración proporcionada.
+
+getAuth(app): Obtiene una instancia del servicio de autenticación de Firebase.
+
+getFirestore(app): Obtiene una instancia de Firestore.
+
+Configuración del Idioma de Autenticación:
+
+auth.languageCode = 'es': Configura el idioma de autenticación de Firebase a español.
+
+Función registrar:
+
+Propósito: Registrar un nuevo usuario en Firebase y almacenar sus datos en Firestore.
+
+Descripción:
+
+Obtiene los valores de los campos del formulario (correo electrónico, contraseña, nombre, licencia y número de teléfono).
+
+Verifica que todos los campos estén llenos.
+
+Valida el formato del correo electrónico.
+
+Crea un nuevo usuario en Firebase Authentication con correo electrónico y contraseña.
+
+Almacena los datos del usuario en Firestore en un documento dentro de la colección "drivers".
+
+Redirige al usuario a la página principal después de un registro exitoso.
+
+Función inicio:
+
+Propósito: Iniciar sesión con un usuario existente en Firebase.
+
+Descripción:
+
+Obtiene los valores de los campos del formulario de inicio de sesión (correo electrónico y contraseña).
+
+Verifica que ambos campos estén llenos.
+
+Inicia sesión en Firebase Authentication con el correo electrónico y la contraseña proporcionados.
+
+Retorna true si el inicio de sesión fue exitoso, y false en caso de error.
+
+Función cerrar:
+
+Propósito: Cerrar la sesión de un usuario en Firebase.
+
+Descripción:
+
+Llama a signOut para cerrar la sesión del usuario.
+
+Elimina el estado de sesión y la URL de la foto de perfil del localStorage.
+
+Redirige al usuario a la página principal después de cerrar la sesión.
+
+Asignación de Funciones al Objeto window:
+
+Asigna las funciones registrar, inicio y cerrar al objeto window para que estén disponibles globalmente en la aplicación web.
