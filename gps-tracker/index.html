@@ -1,66 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Metadata básica para configurar la codificación de caracteres y el viewport -->
+  <!-- Metadata básica -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naviway</title>
-  <!-- Enlace a la fuente Mulish de Google Fonts -->
+  
+  <!-- Fuentes y estilos -->
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Enlace al archivo de estilos CSS externo -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Enlace a los íconos de Font Awesome para utilizar íconos en el sitio -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Script para Google reCAPTCHA para proteger formularios contra bots -->
+  
+  <!-- Scripts -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <!-- Script que importa un módulo de JavaScript de Firebase -->
   <script type="module" src="../Firebase/registrareiniciar.js"></script>
 </head>
 <body>
-
-  <!-- Encabezado del sitio -->
+  <!-- Encabezado -->
   <header class="navbar">
     <div class="container">
-      <!-- Logo del sitio -->
       <div class="logo">
         <img src="/inicio/images/logo.png" alt="Naviway Logo" class="logo-image">
       </div>
-      <!-- Enlaces de navegación -->
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="../about/about.html">About</a>
         <a href="#">Service</a>
         <a href="#">Contact</a>
       </nav>
-      <!-- Contenedor de botones de registro e inicio de sesión -->
       <div class="btn-container">
-        <!-- Botón de registro -->
-        <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
-        <!-- Botón de inicio de sesión -->
-        <button class="btn signin" onclick="window.location.href='/inicio/signin.html';">Sign in</button>
-        <!-- Contenedor de la imagen de perfil del usuario, inicialmente oculto -->
+        <!-- Botones para usuarios no autenticados -->
+        <button id="signup-btn" class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+        <button id="signin-btn" class="btn signin" onclick="window.location.href='/inicio/signin.html';">Sign in</button>
+        
+        <!-- Perfil del usuario (oculto inicialmente) -->
         <div id="profile-container" style="display: none;">
           <img id="profile-picture" class="profile-picture" src="images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
         </div>
       </div>
     </div>
   </header>
-
-  <!-- Contenido principal del sitio -->
+  
+  <!-- Contenido principal -->
   <div class="content">
     <section class="home-section">
       <div class="content-box">
-        <!-- Sección de texto descriptivo -->
         <div class="text">
           <h2>Seguimiento GPS Inteligente</h2>
           <p>
             Naviway es un sistema de seguimiento GPS avanzado que integra geolocalización y datos 
             de tráfico en tiempo real para la gestión eficiente de rutas. Diseñado para empresas 
-            de transporte, permite monitorear flotas, optimizar trayectos, y responder rápidamente 
+            de transporte, permite monitorear flotas, optimizar trayectos y responder rápidamente 
             a incidentes o congestiones, garantizando una movilidad más eficiente.
           </p>
         </div>
-        <!-- Sección de imagen descriptiva -->
         <div class="image">
           <img src="/inicio/images/mapa.png" alt="Mapa de seguimiento GPS">
         </div>
@@ -68,15 +61,15 @@
     </section>
   </div>
 
-  <!-- Menú desplegable para el perfil del usuario -->
-  <div id="dropdown-menu" class="dropdown-menu">
+  <!-- Menú desplegable -->
+  <div id="dropdown-menu" class="dropdown-menu" style="display: none;">
     <a href="../user/account.html">Account</a>
     <a href="../vehicles/vehicles.html">Vehicles</a>
     <a href="../map/map.html">Mapa</a>
     <button class="logout-button" onclick="logout()">Salir</button>
   </div>
 
-  <!-- Pie de página del sitio -->
+  <!-- Pie de página -->
   <footer class="footer">
     <div class="footer-logo">
       <img src="/inicio/images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -93,79 +86,44 @@
   </footer>
 
   <script type="module">
-    // Importar funciones necesarias de Firebase
+    // Importar funciones de Firebase
     import { cerrar } from '../Firebase/registrareiniciar.js';
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
     const auth = getAuth();
+    const signupBtn = document.getElementById('signup-btn');
+    const signinBtn = document.getElementById('signin-btn');
+    const profileContainer = document.getElementById('profile-container');
+    const profilePicture = document.getElementById('profile-picture');
+    const dropdownMenu = document.getElementById('dropdown-menu');
 
-    // Evento que se ejecuta cuando el DOM está completamente cargado
-    document.addEventListener('DOMContentLoaded', function() {
-      // Verificación del estado de autenticación del usuario
-      onAuthStateChanged(auth, function(user) {
-        if (user) {
-          // Usuario autenticado
-          localStorage.setItem('loggedIn', 'true');
-          localStorage.setItem('userPhotoURL', user.photoURL || 'images/user-profile.jpg');
-          updateAuthButtons(user);
-        } else {
-          // Usuario no autenticado
-          localStorage.setItem('loggedIn', 'false');
-          updateAuthButtons(null);
-        }
-      });
+    // Verificar estado de autenticación
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Usuario autenticado
+        signupBtn.style.display = 'none';
+        signinBtn.style.display = 'none';
+        profileContainer.style.display = 'block';
 
-      // Verificar el estado de inicio de sesión almacenado en localStorage
-      const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-      if (isLoggedIn) {
-        const userPhotoURL = localStorage.getItem('userPhotoURL');
-        updateAuthButtons({ photoURL: userPhotoURL });
+        // Cargar imagen y configuración de usuario
+        profilePicture.src = user.photoURL || 'images/default-user.png';
       } else {
-        updateAuthButtons(null);
+        // Usuario no autenticado
+        signupBtn.style.display = 'inline-block';
+        signinBtn.style.display = 'inline-block';
+        profileContainer.style.display = 'none';
       }
     });
 
-    // Función para actualizar los botones de autenticación según el estado del usuario
-    function updateAuthButtons(user) {
-      if (user) {
-        // Mostrar imagen de perfil si el usuario está autenticado
-        const profileImg = document.getElementById('profile-picture');
-        profileImg.src = user.photoURL || 'images/user-profile.jpg'; // URL de la foto de perfil del usuario
-        profileImg.style.display = 'block';
-        document.querySelector('.btn.signup').style.display = 'none';
-        document.querySelector('.btn.signin').style.display = 'none';
-        document.getElementById('profile-container').style.display = 'block';
-      } else {
-        // Mostrar botones de Sign up y Sign in si el usuario no ha iniciado sesión
-        document.querySelector('.btn.signup').style.display = 'inline-block';
-        document.querySelector('.btn.signin').style.display = 'inline-block';
-        document.getElementById('profile-container').style.display = 'none';
-      }
-    }
-
-    // Función asincrónica para cerrar sesión
-    async function logout() {
-      await cerrar(); // Llama a la función de cerrar sesión de registrareiniciar.js
-      localStorage.setItem('loggedIn', 'false'); // Marcar al usuario como deslogueado
-      localStorage.removeItem('userPhotoURL'); // Eliminar la URL de la foto de perfil
-      updateAuthButtons(null); // Actualizar los botones
-      document.getElementById('dropdown-menu').classList.remove('show'); // Ocultar menú
-    }
-
-    // Manejar clics fuera del menú para cerrarlo
-    window.onclick = function(event) {
-      const menu = document.getElementById('dropdown-menu');
-      if (!event.target.matches('.profile-picture') && !event.target.matches('#dropdown-menu *')) {
-        if (menu.classList.contains('show')) {
-          menu.classList.remove('show');
-        }
-      }
-    };
-
-    // Función para mostrar/ocultar el menú desplegable
+    // Alternar visibilidad del menú desplegable
     function toggleDropdown() {
-      const menu = document.getElementById('dropdown-menu');
-      menu.classList.toggle('show');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Cerrar sesión
+    function logout() {
+      cerrar();
+      window.location.href = 'index.html';
     }
   </script>
 </body>
