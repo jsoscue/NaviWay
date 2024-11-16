@@ -1,5 +1,7 @@
 Descripción General
-Este código HTML crea una página web llamada Naviway que permite a los usuarios administrar sus cuentas. La página incluye una barra de navegación, un formulario para actualizar la información del perfil, y un pie de página con enlaces a redes sociales. También gestiona la autenticación y el cierre de sesión de usuarios mediante Firebase.
+Este código HTML crea una página web llamada Naviway que permite a los usuarios administrar sus cuentas. 
+La página incluye una barra de navegación, un formulario para actualizar la información del perfil, y un pie de página con enlaces a redes sociales. 
+También gestiona la autenticación y el cierre de sesión de usuarios mediante Firebase.
 
 Desglose del Código
 Encabezado (<head>):
