@@ -1,4 +1,7 @@
+// Importa la función saveLocationData desde el módulo Firebase/realtime.js
 import { saveLocationData } from '../Firebase/realtime.js';  // Asegúrate de que la ruta del archivo sea correcta
+
+// Variables globales para el mapa y la simulación
 let map, marker, trafficLayer, directionsService, directionsRenderer;
 let routePoints = [];
 let routeIndex = 0;
@@ -14,16 +17,19 @@ let orden = "001";  // Ejemplo de número de orden
 let routeName = "";  // Nombre de la ruta
 let isReturning = false;  // Indica si el bus está en el camino de regreso
 
-// Función llamada por la API de Google Maps
+// Función llamada por la API de Google Maps para inicializar el mapa
 function initMap() {
+    // Crear un nuevo mapa centrado en las coordenadas especificadas
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 4.6280, lng: -74.1000 },
         zoom: 14,
     });
 
+    // Añadir capa de tráfico al mapa
     trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap(map);  // Activa la capa de tráfico
 
+    // Crear un marcador en una posición específica
     marker = new google.maps.Marker({
         position: { lat: 4.7061, lng: -74.2306 },  // Coordenadas de Mosquera
         map: map,
@@ -34,12 +40,14 @@ function initMap() {
         title: "Bus en Movimiento",
     });
 
+    // Inicializar el servicio de direcciones y el renderizador de direcciones de Google Maps
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
 
     const infoWindow = new google.maps.InfoWindow();
 
+    // Añadir listener para mostrar información del vehículo al hacer clic en el marcador
     marker.addListener("click", () => {
         const infoContent = `
             <div class="info-window">
@@ -70,7 +78,7 @@ function initMap() {
     }
 }
 
-// Calcula y muestra la ruta
+// Función para calcular y mostrar la ruta en el mapa
 function calculateAndDisplayRoute(start, end) {
     directionsService.route(
         {
@@ -90,7 +98,7 @@ function calculateAndDisplayRoute(start, end) {
     );
 }
 
-// Simula el movimiento del bus
+// Función para simular el movimiento del bus a lo largo de la ruta
 function startSimulation() {
     setInterval(() => {
         if (routeIndex < routePoints.length - 1) {
@@ -98,32 +106,32 @@ function startSimulation() {
             marker.setPosition(nextPoint);
             const lat = nextPoint.lat();
             const lng = nextPoint.lng();
-            saveLocationData(lat, lng);
+            saveLocationData(lat, lng);  // Guarda los datos de ubicación en Firebase
             simulateData();
         } else {
             routeIndex = 0;  // Reinicia la ruta cuando se completa
         }
-    }, 2000);  // Aumentar el intervalo de tiempo a 2 segundos para reducir la frecuencia de actualización
+    }, 2000);  // Intervalo de 2 segundos para la actualización de la posición
 }
 
-// Simula los datos del bus
+// Función para simular los datos del bus
 function simulateData() {
-    speed = Math.floor(Math.random() * (80 - 20 + 1)) + 20;
-    seatBelt = Math.random() > 0.2;
-    kmTraveled += speed / 60;  // Asume que la simulación se ejecuta cada minuto
+    speed = Math.floor(Math.random() * (80 - 20 + 1)) + 20;  // Simula la velocidad del bus entre 20 y 80 km/h
+    seatBelt = Math.random() > 0.2;  // Simula el uso del cinturón de seguridad (80% de probabilidad de estar puesto)
+    kmTraveled += speed / 60;  // Calcula los kilómetros recorridos, asumiendo que la simulación se ejecuta cada minuto
     if (Math.random() < 0.1) {
         stops++;
-        stopDuration = Math.floor(Math.random() * 5) + 1;
+        stopDuration = Math.floor(Math.random() * 5) + 1;  // Simula la duración de una parada entre 1 y 5 minutos
     }
     if (Math.random() < 0.05) {
-        hardBrakes++;
+        hardBrakes++;  // Incrementa las alertas por frenadas bruscas (5% de probabilidad)
     }
     if (Math.random() < 0.05) {
-        routeDeviations++;
+        routeDeviations++;  // Incrementa las alertas por desvíos de ruta (5% de probabilidad)
     }
 }
 
-// Muestra el mapa después de la bienvenida
+// Muestra el mapa después de la pantalla de bienvenida
 window.onload = () => {
     const welcomeScreen = document.getElementById("welcome-screen");
     setTimeout(() => {
