@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
+// Configuración de Firebase, con claves y detalles del proyecto
 const firebaseConfig = {
   apiKey: "AIzaSyD0Im_ROxNZcWaBhj9w4Ncrh7MOELnWZGE",
   authDomain: "naviway-database.firebaseapp.com",
@@ -12,13 +13,17 @@ const firebaseConfig = {
   measurementId: "G-MTB3GZZZ9N"
 };
 
-// Inicializa Firebase
+// Inicializa Firebase con la configuración proporcionada
 const app = initializeApp(firebaseConfig);
 console.log('Firebase App Initialized:', app); // Verificar inicialización de Firebase
 const database = getDatabase(app);
 console.log('Firebase Database:', database); // Verificar inicialización de la base de datos
 
-// Función para almacenar datos de geolocalización en Firebase con timestamp en formato entero y fecha legible
+/**
+ * Función para almacenar datos de geolocalización en Firebase con timestamp en formato entero y fecha legible
+ * @param {number} lat - Latitud de la ubicación
+ * @param {number} lng - Longitud de la ubicación
+ */
 export function saveLocationData(lat, lng) {
   const timestamp = Date.now(); // Obtiene el timestamp en milisegundos como entero
   const readableDate = new Date(timestamp).toLocaleString(); // Convierte el timestamp a una fecha legible
@@ -26,7 +31,7 @@ export function saveLocationData(lat, lng) {
   console.log('Guardando fecha legible:', readableDate); // Añadir log para verificar la fecha legible
   const locationRef = ref(database, 'bus/location_history'); // Referencia en la base de datos
 
-  // Almacena latitud, longitud, timestamp y fecha legible
+  // Almacena latitud, longitud, timestamp y fecha legible en la base de datos
   push(locationRef, { latitude: lat, longitude: lng, timestamp, readableDate })
     .then(() => {
       console.log('Datos de localización guardados en Firebase.');
@@ -38,7 +43,10 @@ export function saveLocationData(lat, lng) {
     });
 }
 
-// Función para procesar los datos recién guardados
+/**
+ * Función para procesar los datos recién guardados
+ * @param {Object} data - Objeto que contiene los datos de localización
+ */
 function processSavedData(data) {
   console.log('Procesando datos guardados:', data);
   // Aquí puedes añadir cualquier lógica adicional para procesar los datos
