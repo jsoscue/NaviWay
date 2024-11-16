@@ -1,0 +1,55 @@
+Descripción General
+Este código simula el movimiento de un bus en un mapa de Google Maps, mostrando información relevante del vehículo y actualizando su posición en tiempo real. 
+Utiliza la API de Google Maps para renderizar el mapa y las rutas, y Firebase para guardar datos de ubicación. 
+Además, incluye una pantalla de bienvenida que se muestra brevemente al cargar la página.
+
+Desglose del Código
+Importaciones y Variables Globales:
+
+Importación: La función saveLocationData se importa desde un módulo de Firebase (realtime.js) para guardar datos de ubicación.
+
+Variables Globales: Define múltiples variables para manejar el estado del mapa, el marcador, los datos de la ruta, y las estadísticas del vehículo como velocidad, paradas, cinturón de seguridad, etc.
+
+Función initMap:
+
+Inicializa el mapa: Configura el mapa centrado en unas coordenadas específicas (latitud y longitud) con un nivel de zoom determinado.
+
+Capa de Tráfico: Añade una capa de tráfico al mapa (trafficLayer) para mostrar información del tráfico en tiempo real.
+
+Marcador: Crea un marcador en unas coordenadas iniciales con un icono personalizado de un bus.
+
+Ventana de Información: Configura una ventana de información (infoWindow) que muestra datos relevantes del vehículo cuando se hace clic en el marcador.
+
+Servicio de Direcciones: Configura el servicio de direcciones y el renderizador de direcciones para mostrar la ruta en el mapa.
+
+Función calculateAndDisplayRoute:
+
+Calcula la Ruta: Define la ruta desde un origen (Mosquera) a un destino (Puente Aranda, Bogotá) utilizando el modo de viaje en coche (DRIVING).
+
+Renderiza la Ruta: Muestra la ruta en el mapa utilizando el renderizador de direcciones y guarda los puntos de la ruta en routePoints.
+
+Inicia la Simulación: Llama a la función startSimulation para comenzar la simulación del movimiento del bus.
+
+Función startSimulation:
+
+Intervalo de Movimiento: Utiliza setInterval para mover el marcador a lo largo de los puntos de la ruta a intervalos regulares (2 segundos).
+
+Actualización de Posición: Actualiza la posición del marcador en el mapa y guarda los datos de ubicación llamando a saveLocationData.
+
+Simulación de Datos: Llama a simulateData para simular datos del bus como velocidad, paradas, cinturón de seguridad, etc.
+
+Función simulateData:
+
+Simula Velocidad: Genera una velocidad aleatoria entre 20 y 80 km/h.
+
+Simula Cinturón de Seguridad: Determina si el cinturón de seguridad está puesto con una probabilidad del 80%.
+
+Calcula Kilómetros Recorridos: Incrementa los kilómetros recorridos en función de la velocidad simulada.
+
+Simula Paradas: Incrementa el número de paradas con una probabilidad del 10% y la duración de cada parada entre 1 y 5 minutos.
+
+Simula Frenadas Bruscas y Desvíos de Ruta: Incrementa las alertas de frenadas bruscas y desvíos de ruta con una probabilidad del 5%.
+
+Pantalla de Bienvenida:
+
+Mostrando el Mapa:
