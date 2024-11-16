@@ -1,0 +1,75 @@
+Descripción General
+Este código HTML crea una página web llamada Naviway-Map que presenta un mapa interactivo para el monitoreo en tiempo real de vehículos. 
+La página incluye una barra de navegación, una pantalla de bienvenida, un contenedor para el mapa, y un pie de página con enlaces a redes sociales. 
+También gestiona la autenticación y el cierre de sesión de usuarios mediante Firebase.
+
+Desglose del Código
+Encabezado (<head>):
+
+Metadatos Básicos: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Naviway-Map".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish" para la tipografía.
+
+Archivo CSS externo (style.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Script de Google Maps API: Añade el API de Google Maps para mostrar un mapa interactivo en la página.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo del Sitio: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar por diferentes secciones del sitio (Home, About, Service, Contact).
+
+Imagen de Perfil y Menú Desplegable: Muestra la imagen de perfil del usuario, que al hacer clic, despliega un menú con opciones de cuenta, vehículos, mapa, rutas y un botón para cerrar sesión.
+
+Pantalla de Bienvenida (<div id="welcome-screen">):
+
+Muestra un mensaje de bienvenida y un elemento de carga mientras se carga la página.
+
+Contenedor del Mapa (<div id="map-container">):
+
+Título de la Sección: Indica que se trata de monitoreo en tiempo real.
+
+Mapa: Contenedor donde se carga el mapa de Google Maps.
+
+Pie de Página (<footer>):
+
+Logo del Pie de Página: Muestra el logotipo de Naviway.
+
+Derechos de Autor: Indica los derechos de autor del sitio web.
+
+Íconos Sociales: Enlaces a las redes sociales (Facebook, Instagram, LinkedIn, YouTube).
+
+Script para Manejar el Menú Desplegable:
+
+Función toggleDropdown: Muestra u oculta el menú desplegable.
+
+Evento onclick global: Cierra el menú desplegable si se hace clic fuera de él.
+
+Script Principal para Google Maps y Autenticación:
+
+Importar Función cerrar: Importa la función cerrar del módulo registrareiniciar.js para manejar el cierre de sesión.
+
+Función initMap: Inicializa el mapa de Google Maps y añade una capa de tráfico.
+
+Propiedades del Mapa:
+
+center: Coordenadas iniciales del centro del mapa.
+
+zoom: Nivel de zoom del mapa.
+
+trafficLayer: Añade una capa de tráfico al mapa para mostrar el tráfico en tiempo real.
+
+Función logout: Maneja el cierre de sesión llamando a la función cerrar de Firebase.
+
+Asigna logout a window: Hace que la función esté accesible globalmente.
+
+Script Adicional: Importa y ejecuta funcionalidades adicionales desde script.js.
