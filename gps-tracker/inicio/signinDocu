@@ -1,0 +1,66 @@
+Desglose del Código
+Encabezado (<head>):
+
+Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
+
+Título: Define el título de la página como "Sign In - Naviway".
+
+Enlaces a Hojas de Estilo:
+
+Google Fonts: Importa la fuente "Mulish".
+
+Archivo CSS externo (Style.css): Contiene los estilos personalizados del sitio.
+
+Font Awesome: Permite el uso de íconos en el sitio.
+
+Script de Google reCAPTCHA: Añade protección anti-bot al formulario.
+
+Firebase: Importa el módulo registrareiniciar.js para manejar el registro y la autenticación.
+
+Cuerpo (<body>):
+
+Encabezado (<header>):
+
+Logo del Sitio: Muestra el logotipo de Naviway.
+
+Enlaces de Navegación: Permite a los usuarios navegar por diferentes secciones del sitio (Home, About, Service, Contact).
+
+Botones de Registro e Inicio de Sesión: Facilita el registro y el inicio de sesión de usuarios. Incluye un contenedor de perfil que se muestra solo si el usuario está autenticado.
+
+Contenido Principal (<div class="signin-container">):
+
+Formulario de Inicio de Sesión:
+
+Encabezado del Formulario: Incluye el logotipo de Naviway y un botón para cerrar el formulario (regresar a la página anterior).
+
+Campos del Formulario:
+
+Correo Electrónico: Campo de entrada para el correo electrónico del usuario.
+
+Contraseña: Campo de entrada para la contraseña del usuario.
+
+Botón de Envío: Botón para enviar el formulario y completar el inicio de sesión.
+
+Pie de Página (<footer>):
+
+Logo del Pie de Página: Muestra el logotipo de Naviway.
+
+Derechos de Autor: Indica los derechos de autor del sitio web.
+
+Íconos Sociales: Enlaces a las redes sociales (Facebook, Instagram, LinkedIn, YouTube).
+
+Scripts para el Manejo del Inicio de Sesión:
+
+Importación de Firebase:
+
+Importar Funciones: Importa funciones de autenticación (getAuth) y Firestore (getFirestore, doc, getDoc) de Firebase.
+
+Inicialización de Firebase: Inicializa las instancias de auth y db para manejar la autenticación y la base de datos.
+
+Manejo del Evento de Envío del Formulario:
+
+Evento submit: Añade un listener al formulario de inicio de sesión que previene el envío por defecto y maneja el inicio de sesión mediante Firebase.
+
+Validación de Campos: Verifica que los campos de correo electrónico y contraseña no estén vacíos.
+
+Autenticación del Usuario: Llama a la función inicio para autenticar al usuario y, si el inicio de sesión es exitoso, redirige al usuario a la página correspondiente según su rol (administrador o usuario normal).
