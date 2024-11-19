@@ -4,29 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalles del Vehículo</title>
+  <!-- Enlace a fuentes de Google (Mulish) para usar en el diseño -->
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Enlace al archivo CSS de estilos -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Enlace al CDN de Font Awesome para iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <script type="module">
+    // Importación de módulos necesarios para interactuar con Firebase
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-    import { cerrarsesion } from '../Firabase/Salir.js';
+    import { cerrarsesion } from '../Firabase/Salir.js'; // Función para cerrar sesión
 
+    // Inicialización de Firebase Auth y Firestore
     const auth = getAuth();
     const db = getFirestore();
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Verificar el estado de autenticación del usuario
+        // Verificar el estado de autenticación del usuario cuando el DOM está listo
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 console.log('Usuario autenticado:', user.uid);
                 try {
+                    // ID del vehículo que se desea consultar
                     const vehicleId = "2hMYaSwdGwUarzsMngpntATHGtA2";
                     console.log("Obteniendo datos del vehículo con ID: ${vehicleId}");
+                    
+                    // Acceder a la colección "vehicles" en Firestore y obtener los datos del vehículo
                     const vehicleDoc = await getDoc(doc(db, "vehicles", vehicleId));
                     if (vehicleDoc.exists()) {
                         const vehicleData = vehicleDoc.data();
                         console.log('Datos del vehículo:', vehicleData);
+                        
+                        // Rellenar los campos del formulario con los datos obtenidos del vehículo
                         document.getElementById('modelo').value = vehicleData["Modelo"] || '';
                         document.getElementById('marca').value = vehicleData["Marca"] || '';
                         document.getElementById('placa').value = vehicleData["Placa"] || '';
@@ -56,15 +67,17 @@
                 }
             } else {
                 console.log('Usuario no autenticado');
-                window.location.href = '../inicio/index.html';
+                window.location.href = '../inicio/index.html'; // Redirigir a la página de inicio si no está autenticado
             }
         });
 
+        // Función para mostrar u ocultar el menú desplegable de usuario
         document.querySelector('.profile-image').addEventListener('click', () => {
             const menu = document.getElementById('dropdown-menu');
             menu.classList.toggle('show');
         });
 
+        // Función para cerrar el menú desplegable si se hace clic fuera de él
         window.addEventListener('click', (event) => {
             const menu = document.getElementById('dropdown-menu');
             if (!event.target.matches('.profile-image') && menu.classList.contains('show')) {
@@ -72,18 +85,21 @@
             }
         });
 
+        // Función para volver a la página anterior
         document.querySelector('.back-button').addEventListener('click', () => {
             window.history.back();
         });
+
+        // Función para cerrar sesión
         window.logout = async function logout() {
-            await cerrarsesion();
+            await cerrarsesion(); // Llamada a la función de cierre de sesión en Firebase
             localStorage.setItem('loggedIn', 'false');
-          }
+        }
     });
   </script>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (barra de navegación superior) -->
     <header class="navbar">
         <div class="container">
             <div class="logo">
@@ -115,6 +131,7 @@
         <h1>Detalles del Vehículo</h1>
         <form>
             <div class="form-row">
+                <!-- Primera columna de campos del formulario -->
                 <div class="form-column">
                     <label for="modelo">Modelo:</label>
                     <input type="text" id="modelo" name="modelo" disabled>
@@ -143,7 +160,9 @@
                     <label for="duracion-paradas">Duración Promedio de las Paradas:</label>
                     <input type="text" id="duracion-paradas" name="duracion-paradas" disabled>
                 </div>
+                 <!-- Segunda columna de campos -->
                 <div class="form-column">
+                  <!-- Campos de la segunda columna -->
                     <label for="carroceria">Tipo de Carrocería:</label>
                     <input type="text" id="carroceria" name="carroceria" disabled>
 
@@ -182,7 +201,7 @@
         <button class="back-button" onclick="goBack()">Volver</button>
     </div>
 
-    <!-- Footer -->
+    <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -190,6 +209,7 @@
         <p class="copyright">
             Copyright © 2024 <span>Website</span>. All rights reserved.
         </p>
+        <!-- Íconos sociales -->
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
