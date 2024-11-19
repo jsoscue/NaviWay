@@ -1,0 +1,39 @@
+Propósito General
+Esta página permite al usuario editar los datos de un vehículo registrado en el sistema. Proporciona un formulario estructurado para ingresar o modificar información clave del vehículo, del propietario y del conductor.
+
+2. Estructura y Funcionamiento
+Encabezado (header)
+Logo y Navegación:
+Muestra el logotipo de la aplicación en la parte superior izquierda.
+Incluye un menú de navegación con enlaces a otras secciones del sitio, como "Home", "About", "Service" y "Contact".
+Perfil del Usuario:
+Incluye una imagen de perfil que, al hacer clic, despliega un menú con opciones relacionadas con la cuenta, vehículos, rutas y un botón para cerrar sesión.
+Formulario Principal
+Contenido dividido en dos columnas, cada una con etiquetas y campos de entrada:
+Columna 1: Información del Vehículo y Propietario
+Modelo, Marca, Placa, Número de Orden.
+Nombre, Cédula y Teléfono del dueño.
+Columna 2: Información Adicional del Vehículo y Conductor
+Tipo de carrocería, Servicio, Capacidad.
+Licencia de tránsito, Nombre, Cédula y Teléfono del conductor.
+Botones:
+Guardar Cambios: Ejecuta la función saveChanges() para procesar y guardar los datos.
+Volver: Ejecuta la función goBack() para regresar a la página anterior, alertando si los cambios no han sido guardados.
+Pie de Página (footer)
+Incluye el logo de la aplicación, derechos de autor y enlaces a redes sociales (Facebook, Instagram, LinkedIn y YouTube).
+Funciones JavaScript
+Gestión del Menú Desplegable:
+Muestra u oculta el menú del perfil de usuario al hacer clic en la imagen.
+Guardado de Cambios:
+Marca los cambios como guardados y muestra una alerta confirmando el guardado exitoso.
+Regresar a la Página Anterior:
+Verifica si los cambios han sido guardados; si no, solicita confirmación antes de permitir al usuario regresar.
+Cerrar Sesión:
+Llama a una función externa (cerrarsesion) para procesar el cierre de sesión del usuario.
+3. Elementos Técnicos Adicionales
+Estilo:
+Usa fuentes de Google Fonts (Mulish) para un diseño limpio y profesional.
+Integra un archivo CSS externo (styles.css) para personalizar los estilos de la página.
+Usa la librería Font Awesome para los iconos de redes sociales.
+Importación de Funciones:
+Carga un módulo externo (Salir.js) que gestiona el cierre de sesión.
