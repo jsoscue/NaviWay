@@ -1,0 +1,35 @@
+es una página web que está diseñada para mostrar los detalles de un vehículo almacenados en Firebase Firestore. La página incluye una autenticación de usuario y una interfaz de usuario que muestra la información de un vehículo en un formulario, el cual se llena automáticamente con los datos obtenidos de la base de datos de Firebase. Aquí te explico cómo funciona:
+
+Descripción general del código:
+Autenticación de usuario:
+
+La página se asegura de que el usuario esté autenticado antes de permitirle ver los detalles del vehículo. Esto se realiza usando Firebase Auth con la función onAuthStateChanged, que detecta si hay un usuario autenticado.
+Si el usuario no está autenticado, se redirige automáticamente a una página de inicio (../inicio/index.html).
+Si el usuario está autenticado, puede acceder a la información del vehículo y se le muestran los detalles en los campos del formulario.
+Consulta a Firebase Firestore:
+
+Una vez que el usuario está autenticado, el código intenta obtener los detalles de un vehículo desde la base de datos de Firestore.
+Utiliza el ID de un vehículo fijo (en este caso "2hMYaSwdGwUarzsMngpntATHGtA2") para hacer una consulta en la colección vehicles de Firestore.
+Si los datos del vehículo existen en Firestore, se extraen y se muestran en los campos correspondientes del formulario de la página web.
+Formulario con campos deshabilitados:
+
+Los datos obtenidos de Firestore se insertan en los campos del formulario de la página web (por ejemplo, modelo, marca, placa, etc.). Estos campos están deshabilitados, lo que significa que el usuario solo puede ver la información, pero no puede modificarla.
+Esto se hace con un formulario de tipo text en el que los datos de cada campo se llenan automáticamente con los valores obtenidos de Firestore.
+Menú de usuario:
+
+Hay un menú de usuario en la parte superior de la página, que se despliega cuando se hace clic en la imagen de perfil del usuario. Este menú contiene enlaces a otras páginas, como "Cuenta", "Vehículos", "Mapa", "Rutas", y también una opción para cerrar sesión.
+Al hacer clic en el botón de cerrar sesión, la función logout cierra la sesión del usuario en Firebase.
+Funciones de navegación:
+
+La página tiene un botón de "regresar" (<button class="back-button">), que al hacer clic redirige al usuario a la página anterior en su historial de navegación. Esto se maneja con la función window.history.back().
+Componentes clave:
+Autenticación de usuario: Asegura que solo los usuarios autenticados puedan acceder a la página y ver los detalles del vehículo.
+Base de datos de Firebase Firestore: Se usa para almacenar y recuperar los datos de los vehículos.
+Formulario de detalles del vehículo: Muestra la información del vehículo de manera deshabilitada, para solo lectura.
+Menú desplegable: Permite acceder a otras secciones del sistema y cerrar sesión.
+Lo que hace el código:
+Carga los datos del vehículo desde Firebase Firestore y los muestra en la página.
+Verifica si el usuario está autenticado, si no lo está, redirige a la página de inicio.
+Permite que el usuario vea los detalles del vehículo (como el modelo, la marca, la placa, etc.) en un formulario que solo es de lectura.
+Proporciona un menú desplegable en la parte superior de la página donde el usuario puede acceder a otras secciones o cerrar sesión.
+Cierra sesión del usuario si hace clic en el botón de "Salir" en el menú desplegable.
