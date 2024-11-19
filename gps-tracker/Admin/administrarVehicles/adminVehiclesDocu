@@ -1,0 +1,24 @@
+El código proporcionado es una estructura básica para una página web interactiva destinada a la administración y visualización de vehículos dentro del sistema Naviway. A continuación, una descripción más detallada:
+
+Propósito y Funcionalidad:
+Cabecera (Header):
+
+Logo de Naviway: Se incluye un logotipo de la empresa al inicio de la página.
+Barra de navegación: La barra contiene enlaces para redirigir al usuario a distintas secciones del sitio como "Home", "About", "Service" y "Contact".
+Menú desplegable del usuario: Este área permite al usuario navegar a diferentes secciones administrativas como "Account", "Vehicles", "Mapa" y "Rutas". También incluye un botón para cerrar sesión.
+Contenedor de Vehículos:
+
+<div class="vehicles-container">: Este contenedor muestra varios botones interactivos que redirigen a la página de detalles de cada vehículo.
+Botones de Vehículo: Cada botón representa un vehículo, con información como el número de placas y un número de orden único. Al hacer clic en un botón, el usuario es redirigido a una página donde se muestran más detalles específicos sobre ese vehículo.
+Botón "Volver": Este botón permite al usuario regresar a la página anterior en el historial del navegador.
+
+Pie de página (Footer):
+
+Logo de Naviway: Se repite el logotipo en el pie de página.
+Derechos de autor: Muestra un mensaje de copyright con la marca Naviway.
+Redes sociales: Incluye enlaces a plataformas como Facebook, Instagram, LinkedIn y YouTube.
+Scripts Interactivos:
+
+cerrarsesion(): Importa y utiliza una función de Firebase para cerrar sesión, cerrando la sesión del usuario.
+goBack(): Permite que el usuario regrese a la página anterior en el historial del navegador.
+toggleDropdown(): Maneja la visibilidad del menú desplegable del usuario al hacer clic en su imagen de perfil. Si el usuario hace clic fuera del menú, este se oculta automáticamente.
