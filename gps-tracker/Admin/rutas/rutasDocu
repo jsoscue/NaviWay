@@ -32,3 +32,19 @@ Crear Rutas: Permite a los usuarios ingresar detalles de una nueva ruta y enviar
 Navegación: Facilita la navegación entre diferentes secciones del sitio web.
 Perfil de Usuario: Proporciona acceso rápido a la cuenta del usuario y opciones relacionadas, incluyendo la capacidad de cerrar sesión.
 Si necesitas más detalles sobre alguna parte específica del código o tienes alguna otra pregunta, ¡házmelo saber!
+
+
+RUTAS.JS
+---------------------------------------------------------------------------------------------------------------------------------------------
+Descripción General
+Este código añade un evento de escucha al formulario con el ID route-form. Cuando el formulario se envía, el código previene el comportamiento por defecto del formulario (que normalmente recargaría la página) y redirige al usuario a una página de mapa (map.html) con los valores de inicio y destino como parámetros en la URL.
+
+Funcionalidad del Código
+Evento de Envío del Formulario:
+El código utiliza document.getElementById('route-form').addEventListener('submit', function(event) { ... }); para añadir un evento de escucha al formulario. Este evento se activa cuando el formulario se envía.
+Prevención del Comportamiento por Defecto:
+event.preventDefault(); se utiliza para evitar que el formulario se envíe de la manera tradicional, lo que normalmente recargaría la página.
+Obtención de Valores de los Campos:
+const start = document.getElementById('start').value; y const end = document.getElementById('end').value; obtienen los valores de los campos de texto con los IDs start y end, que representan el punto de inicio y el destino de la ruta.
+Redirección a la Página del Mapa:
+window.location.href = \…/map.html?start=${start}&end
