@@ -1,0 +1,28 @@
+Este código corresponde a la estructura de una página web destinada a la administración de vehículos en un sistema llamado Naviway. Es parte de una plataforma web, probablemente utilizada por administradores o usuarios con privilegios para gestionar flotas de vehículos, como autobuses, y acceder a funcionalidades adicionales.
+
+Resumen de lo que hace el código:
+Estructura del Documento:
+
+El código está construido en HTML, con la inclusión de CSS para los estilos y JavaScript para la interactividad.
+La página está diseñada para ser accesible en dispositivos móviles y de escritorio, gracias a la inclusión del meta tag viewport.
+Cabecera (Header):
+
+Logo y Barra de Navegación: Contiene el logo de Naviway y enlaces de navegación a páginas como Home, About, Service y Contact.
+Menú Desplegable del Usuario: Un menú que aparece cuando el usuario hace clic en su imagen de perfil. El menú tiene enlaces a diferentes secciones del sistema (como "Account", "Vehicles", "Mapa", "Rutas") y un botón para cerrar sesión.
+Contenido Principal:
+
+Botones de Administración: Se muestran botones para acceder a dos secciones clave de la administración de vehículos:
+Vehículos Actuales: Para ver una lista de vehículos en uso.
+Administrar Vehículos: Para gestionar los vehículos (probablemente agregar, editar o eliminar vehículos).
+Cada botón tiene un ícono que representa un autobús (🚌), lo que indica que la plataforma se centra en la gestión de vehículos, específicamente en flotas de transporte.
+Funcionalidad de Regresar:
+
+Botón de "Volver": Ofrece la posibilidad de regresar a la página anterior en el historial de navegación del navegador, usando el método window.history.back().
+Pie de Página (Footer):
+
+Muestra el logo de Naviway nuevamente y contiene un mensaje de derechos de autor (Copyright), junto con enlaces a redes sociales como Facebook, Instagram, LinkedIn y YouTube.
+Interactividad con JavaScript:
+
+Cerrar sesión: El script importa una función cerrarsesion() desde un archivo de Firebase que se encarga de cerrar la sesión del usuario de la plataforma.
+Menú Desplegable: El menú de usuario es interactivo. Al hacer clic sobre la imagen de perfil, se alterna la visibilidad del menú (mostrar/ocultar).
+Cierre del Menú: Si el usuario hace clic fuera del menú desplegable, este se cierra automáticamente.
