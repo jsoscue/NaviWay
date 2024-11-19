@@ -1,116 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrar Vehículos - Naviway</title>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Metadatos básicos del documento -->
+  <meta charset="UTF-8"> <!-- Especifica la codificación de caracteres del documento -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura el diseño responsivo para dispositivos móviles -->
+  <title>Vehículos Actuales - Naviway</title> <!-- Título que aparece en la pestaña del navegador -->
+  
+  <!-- Fuente personalizada desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet"> <!-- Fuente "Mulish" para estilizar el texto -->
+
+  <!-- Archivo de estilos CSS -->
+  <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo de estilos personalizados para la página -->
+
+  <!-- Librería de iconos Font Awesome para los iconos sociales y de interfaz -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Enlace a los iconos de Font Awesome para las redes sociales -->
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Cabecera del sitio web con la barra de navegación -->
     <header class="navbar">
         <div class="container">
+            <!-- Logo de la empresa Naviway -->
             <div class="logo">
-                <img src="../images/logo.png" alt="Naviway Logo" class="logo-image">
+                <img src="../images/logo.png" alt="Naviway Logo" class="logo-image"> <!-- Imagen del logo -->
             </div>
+            <!-- Barra de navegación principal -->
             <nav class="nav-links">
-                <a href="../../index.html">Home</a>
-                <a href="../about/about.html">About</a>
-                <a href="#">Service</a>
-                <a href="#">Contact</a>
+                <a href="../../index.html">Home</a> <!-- Enlace a la página de inicio -->
+                <a href="../about/about.html">About</a> <!-- Enlace a la página de información sobre la empresa -->
+                <a href="#">Service</a> <!-- Enlace de servicio (aún sin funcionalidad) -->
+                <a href="#">Contact</a> <!-- Enlace de contacto (aún sin funcionalidad) -->
             </nav>
             
-            <!-- Imagen del Usuario y Menú Desplegable -->
+            <!-- Imagen de perfil del usuario y menú desplegable -->
             <div class="user-profile" onclick="toggleDropdown()">
-                <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image">
+                <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image"> <!-- Imagen del perfil del usuario -->
                 <div id="dropdown-menu" class="dropdown-menu">
-                    <a href="../user/accountAdmin.html">Account</a>
-                    <a href="../adminVehicles/admin.html">Vehicles</a>
-                    <a href="../map.html">Mapa</a>
-                    <a href="../rutas/rutas.html">Rutas</a>
-                    <button class="logout-button" onclick="logout()">Salir</button>              
+                    <a href="../user/accountAdmin.html">Account</a> <!-- Enlace al perfil de usuario (cuenta administrativa) -->
+                    <a href="../adminVehicles/admin.html">Vehicles</a> <!-- Enlace a la sección de vehículos -->
+                    <a href="../map.html">Mapa</a> <!-- Enlace al mapa -->
+                    <a href="../rutas/rutas.html">Rutas</a> <!-- Enlace a la sección de rutas -->
+                    <button class="logout-button" onclick="logout()">Salir</button> <!-- Botón de cerrar sesión -->
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Contenido Principal -->
+    <!-- Contenedor principal que muestra los vehículos -->
     <div class="vehicles-container">
+        <!-- Cada botón de vehículo que redirige a la página de detalles del vehículo -->
         <div class="vehicle-button">
-            <a href="../formulariosVehiculos/vehicleDetailsAdmin.html">
-                <span class="vehicle-icon">🚌</span>
+            <a href="../formulariosVehiculos/vehicleDetailsAdmin.html?placas=ABC123&orden=001">
+                <span class="vehicle-icon">🚌</span> <!-- Icono que representa un vehículo (bus) -->
                 <div class="vehicle-info">
-                    <p>Placas: ABC123</p>
-                    <p>No de orden: 001</p>
+                    <p>Placas: ABC123</p> <!-- Número de placas del vehículo -->
+                    <p>No de orden: 001</p> <!-- Número de orden del vehículo -->
                 </div>
             </a>
-            <div class="vehicle-actions">
-                <button class="edit-button" onclick="location.href='../formulariosVehiculos/editarVehiculos.html?placas=ABC123&orden=001'">Editar</button>
-                <button class="delete-button">Eliminar</button>
-            </div>
         </div>
         <div class="vehicle-button">
-            <a href="../formulariosVehiculos/vehicleDetailsAdmin.html">
-                <span class="vehicle-icon">🚌</span>
+            <a href="../formulariosVehiculos/vehicleDetailsAdmin.html?placas=XYZ789&orden=002">
+                <span class="vehicle-icon">🚌</span> <!-- Icono que representa un vehículo (bus) -->
                 <div class="vehicle-info">
-                    <p>Placas: XYZ789</p>
-                    <p>No de orden: 002</p>
+                    <p>Placas: XYZ789</p> <!-- Número de placas del vehículo -->
+                    <p>No de orden: 002</p> <!-- Número de orden del vehículo -->
                 </div>
             </a>
-            <div class="vehicle-actions">
-                <button class="edit-button" onclick="location.href='../formulariosVehiculos/editarVehiculos.html?placas=XYZ789&orden=002'">Editar</button>
-                <button class="delete-button">Eliminar</button>
-            </div>
         </div>
-        <!-- Agrega más vehículos según sea necesario -->
+        <!-- Se pueden agregar más botones de vehículos aquí según sea necesario -->
     </div>
 
-    <button class="add-button" onclick="location.href='../formulariosVehiculos/agregarVehiculo.html'">Añadir Vehículo Nuevo</button>
+    <!-- Botón para volver a la página anterior -->
     <button class="back-button" onclick="goBack()">Volver</button>
 
-    <!-- Footer -->
+    <!-- Pie de página con información de derechos de autor y enlaces a redes sociales -->
     <footer class="footer">
         <div class="footer-logo">
-            <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+            <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image"> <!-- Logo de la empresa en el pie de página -->
         </div>
         <p class="copyright">
-            Copyright © 2024 <span>Website</span>. All rights reserved.
+            Copyright © 2024 <span>Website</span>. All rights reserved. <!-- Mensaje de derechos de autor -->
         </p>
         <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a> <!-- Icono de Facebook -->
+            <a href="#"><i class="fab fa-instagram"></i></a> <!-- Icono de Instagram -->
+            <a href="#"><i class="fab fa-linkedin-in"></i></a> <!-- Icono de LinkedIn -->
+            <a href="#"><i class="fab fa-youtube"></i></a> <!-- Icono de YouTube -->
         </div>
     </footer>
-<script type="module">
-       import { cerrarsesion } from '../Firabase/Salir.js';
+
+    <!-- Scripts para funcionalidades interactivas -->
+    <script type="module">
+       import { cerrarsesion } from '../Firabase/Salir.js'; // Importa la función personalizada para cerrar sesión desde Firebase
         window.logout = async function logout() {
-            await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+            await cerrarsesion(); // Llama a la función de cerrar sesión de Firebase
         }
-</script>
+    </script>
+
     <script>
-        
-        // Función para volver a la página anterior
+        // Función para volver a la página anterior en el historial del navegador
         function goBack() {
-            window.history.back();
+            window.history.back(); // Navega hacia la página anterior en el historial
         } 
         
-        // Mostrar/Ocultar el menú desplegable
+        // Función para mostrar u ocultar el menú desplegable del perfil del usuario
         function toggleDropdown() {
             const menu = document.getElementById('dropdown-menu');
-            menu.classList.toggle('show');
+            menu.classList.toggle('show'); // Alterna la clase "show" para mostrar/ocultar el menú
         }
 
-        // Cerrar el menú si se hace clic fuera de él
+        // Función para cerrar el menú si se hace clic fuera de él
         window.onclick = function(event) {
             const menu = document.getElementById('dropdown-menu');
-            if (!event.target.matches('.profile-image')) {
+            if (!event.target.matches('.profile-image')) { // Verifica si el clic no fue en el perfil del usuario
                 if (menu.classList.contains('show')) {
-                    menu.classList.remove('show');
+                    menu.classList.remove('show'); // Remueve la clase "show" para ocultar el menú
                 }
             }
         };
