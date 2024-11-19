@@ -1,100 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrador - Naviway</title>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Metadatos básicos del documento -->
+  <meta charset="UTF-8"> <!-- Define la codificación de caracteres para soportar caracteres especiales -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista para dispositivos móviles -->
+  <title>Administrador - Naviway</title> <!-- Título de la página que aparece en la pestaña del navegador -->
+  
+  <!-- Fuente personalizada desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet"> <!-- Carga la fuente "Mulish" para la página -->
+  
+  <!-- Archivo de estilos CSS -->
+  <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo de estilos personalizados -->
+
+  <!-- Librería de iconos Font Awesome para los iconos de redes sociales y de interfaz -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Carga los iconos de Font Awesome -->
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Cabecera con la barra de navegación -->
     <header class="navbar">
         <div class="container">
+            <!-- Logo de la empresa Naviway -->
             <div class="logo">
-                <img src="../images/logo.png" alt="Naviway Logo" class="logo-image">
+                <img src="../images/logo.png" alt="Naviway Logo" class="logo-image"> <!-- Imagen del logo -->
             </div>
+            <!-- Barra de navegación principal -->
             <nav class="nav-links">
-                <a href="../../index.html">Home</a>
-                <a href="../about/about.html">About</a>
-                <a href="#">Service</a>
-                <a href="#">Contact</a>
+                <a href="../../index.html">Home</a> <!-- Enlace a la página de inicio -->
+                <a href="../about/about.html">About</a> <!-- Enlace a la página sobre la empresa -->
+                <a href="#">Service</a> <!-- Enlace de servicio (aún sin funcionalidad) -->
+                <a href="#">Contact</a> <!-- Enlace de contacto (aún sin funcionalidad) -->
             </nav>
             
-            <!-- Imagen del Usuario y Menú Desplegable -->
+            <!-- Imagen de perfil y menú desplegable -->
             <div class="user-profile" onclick="toggleDropdown()">
-                <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image">
+                <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image"> <!-- Imagen de perfil del usuario -->
                 <div id="dropdown-menu" class="dropdown-menu">
-                    <a href="../user/accountAdmin.html">Account</a>
-                    <a href="admin.html">Vehicles</a>
-                    <a href="../map.html">Mapa</a>
-                    <a href="../rutas/rutas.html">Rutas</a>
-                    <button class="logout-button" onclick="logout()">Salir</button>              
+                    <a href="../user/accountAdmin.html">Account</a> <!-- Enlace a la página de cuenta del usuario -->
+                    <a href="admin.html">Vehicles</a> <!-- Enlace a la administración de vehículos -->
+                    <a href="../map.html">Mapa</a> <!-- Enlace al mapa -->
+                    <a href="../rutas/rutas.html">Rutas</a> <!-- Enlace a las rutas -->
+                    <button class="logout-button" onclick="logout()">Salir</button> <!-- Botón para cerrar sesión -->
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Contenido Principal -->
+    <!-- Contenedor principal con botones para administrar vehículos -->
     <div class="admin-container">
         <div class="admin-button">
             <a href="../current-vehiclesAdmin/current-vehicles.html">
-                <span class="vehicle-icon">🚌</span>
-                <span class="button-text">Vehículos Actuales</span>
+                <span class="vehicle-icon">🚌</span> <!-- Icono de vehículo (autobús) -->
+                <span class="button-text">Vehículos Actuales</span> <!-- Texto del botón "Vehículos Actuales" -->
             </a>
         </div>
         <div class="admin-button">
             <a href="../administrarVehicles/manage-vehicles.html">
-                <span class="vehicle-icon">🚌</span>
-                <span class="button-text">Administrar Vehículos</span>
+                <span class="vehicle-icon">🚌</span> <!-- Icono de vehículo (autobús) -->
+                <span class="button-text">Administrar Vehículos</span> <!-- Texto del botón "Administrar Vehículos" -->
             </a>
         </div>
     </div>
 
+    <!-- Botón para regresar a la página anterior -->
     <button class="back-button" onclick="goBack()">Volver</button>
 
-    <!-- Footer -->
+    <!-- Pie de página con el logo y enlaces a redes sociales -->
     <footer class="footer">
         <div class="footer-logo">
-            <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image">
+            <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image"> <!-- Logo de la empresa -->
         </div>
         <p class="copyright">
-            Copyright © 2024 <span>Website</span>. All rights reserved.
+            Copyright © 2024 <span>Website</span>. All rights reserved. <!-- Mensaje de derechos de autor -->
         </p>
         <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a> <!-- Icono de Facebook -->
+            <a href="#"><i class="fab fa-instagram"></i></a> <!-- Icono de Instagram -->
+            <a href="#"><i class="fab fa-linkedin-in"></i></a> <!-- Icono de LinkedIn -->
+            <a href="#"><i class="fab fa-youtube"></i></a> <!-- Icono de YouTube -->
         </div>
     </footer>
-<script type="module">
-       import { cerrarsesion } from '../Firabase/Salir.js';
+
+    <!-- Script para la funcionalidad de la sesión -->
+    <script type="module">
+       import { cerrarsesion } from '../Firabase/Salir.js'; // Importa la función para cerrar sesión desde el archivo Firebase
         window.logout = async function logout() {
-            await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+            await cerrarsesion(); // Llama a la función cerrarsesion para cerrar la sesión
         }
-</script>
-  <script>
-      
-        // Función para volver a la página anterior
+    </script>
+
+    <!-- Funciones de JavaScript para interactividad -->
+    <script>
+        // Función para regresar a la página anterior
         function goBack() {
-            window.history.back();
-        } 
+            window.history.back(); // Navega hacia la página anterior en el historial
+        }
         
-        // Mostrar/Ocultar el menú desplegable
+        // Función para alternar la visibilidad del menú desplegable
         function toggleDropdown() {
             const menu = document.getElementById('dropdown-menu');
-            menu.classList.toggle('show');
+            menu.classList.toggle('show'); // Alterna la clase 'show' para mostrar o esconder el menú
         }
 
-        // Cerrar el menú si se hace clic fuera de él
+        // Función para cerrar el menú si se hace clic fuera de él
         window.onclick = function(event) {
             const menu = document.getElementById('dropdown-menu');
-            if (!event.target.matches('.profile-image')) {
+            if (!event.target.matches('.profile-image')) { // Si el clic no fue en el perfil del usuario
                 if (menu.classList.contains('show')) {
-                    menu.classList.remove('show');
+                    menu.classList.remove('show'); // Remueve la clase 'show' para ocultar el menú
                 }
             }
         };
