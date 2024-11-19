@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Rutas</title>
+    <!-- Fuente de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Enlace al archivo de estilos CSS -->
     <link rel="stylesheet" href="styleRutas.css">
 </head>
 <body>
+    <!-- Encabezado del sitio web -->
     <header class="navbar">
         <div class="container">
             <div class="logo">
+                <!-- Logo del sitio web -->
                 <img src="../images/logo.png" alt="Naviway Logo" class="logo-image">
             </div>
+            <!-- Navegación principal -->
             <nav class="nav-links">
                 <a href="../../index.html">Home</a>
                 <a href="../../about/about.html">About</a>
                 <a href="#">Service</a>
                 <a href="#">Contact</a>
             </nav>
+            <!-- Perfil de usuario con menú desplegable -->
             <div class="user-profile" onclick="toggleDropdown()">
                 <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image">
                 <div id="dropdown-menu" class="dropdown-menu">
@@ -32,6 +39,7 @@
         </div>
     </header>
 
+    <!-- Contenedor del formulario para crear rutas -->
     <div class="route-form-container">
         <div class="route-form">
             <h3>Crear Ruta</h3>
@@ -48,6 +56,7 @@
         </div>
     </div>
 
+    <!-- Pie de página del sitio web -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -62,15 +71,17 @@
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
+
+    <!-- Script para manejar el cierre de sesión -->
     <script type="module">
        import { cerrarsesion } from '../Firabase/Salir.js';
         window.logout = async function logout() {
             await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
         }
-</script>
+    </script>
 
+    <!-- Script para manejar el menú desplegable del perfil de usuario -->
     <script>
-
         function toggleDropdown() {
             const menu = document.getElementById('dropdown-menu');
             menu.classList.toggle('show');
@@ -86,6 +97,8 @@
         };
     </script>
 
+    <!-- Enlace al archivo de script específico para la página de rutas -->
     <script src="./rutas.js"></script>
 </body>
 </html>
+
