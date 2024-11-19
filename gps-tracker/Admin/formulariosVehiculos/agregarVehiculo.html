@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Añadir Vehículo Nuevo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Metadatos del documento -->
+    <meta charset="UTF-8"> <!-- Codificación de caracteres UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adaptación para dispositivos móviles -->
+    <title>Añadir Vehículo Nuevo</title> <!-- Título del documento -->
+
+    <!-- Fuente personalizada desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Enlace al archivo de estilos CSS local -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Iconos de Font Awesome para redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Encabezado del sitio web -->
     <header class="navbar">
         <div class="container">
+            <!-- Logo del sitio -->
             <div class="logo">
                 <img src="../images/logo.png" alt="Naviway Logo" class="logo-image">
             </div>
+
+            <!-- Navegación principal -->
             <nav class="nav-links">
                 <a href="../../index.html">Home</a>
                 <a href="../about/about.html">About</a>
                 <a href="#">Service</a>
                 <a href="#">Contact</a>
             </nav>
-            
-            <!-- Imagen del Usuario y Menú Desplegable -->
+
+            <!-- Menú desplegable del perfil de usuario -->
             <div class="user-profile" onclick="toggleDropdown()">
-                <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image">
+                <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image"> <!-- Imagen del perfil del usuario -->
                 <div id="dropdown-menu" class="dropdown-menu">
                     <a href="../user/accountAdmin.html">Account</a>
                     <a href="../vehicles/vehicles.html">Vehicles</a>
                     <a href="../map.html">Mapa</a>
                     <a href="../rutas/rutas.html">Rutas</a>
-                    <button class="logout-button" onclick="logout()">Salir</button>              
+                    <button class="logout-button" onclick="logout()">Salir</button> <!-- Botón para cerrar sesión -->
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Contenido Principal -->
+    <!-- Contenedor principal para el formulario -->
     <div class="vehicle-details-container">
         <h1>Agregar Nuevo Vehículo</h1>
+        <!-- Formulario para agregar un nuevo vehículo -->
         <form>
             <div class="form-row">
+                <!-- Primera columna del formulario -->
                 <div class="form-column">
                     <label for="modelo">Modelo:</label>
                     <input type="text" id="modelo" name="modelo" required>
@@ -63,6 +75,8 @@
                     <label for="dueno-celular">Número de Celular del Dueño:</label>
                     <input type="text" id="dueno-celular" name="dueno-celular" required>
                 </div>
+
+                <!-- Segunda columna del formulario -->
                 <div class="form-column">
                     <label for="carroceria">Tipo de Carrocería:</label>
                     <input type="text" id="carroceria" name="carroceria" required>
@@ -86,12 +100,14 @@
                     <input type="text" id="conductor-telefono" name="conductor-telefono" required>
                 </div>
             </div>
+            <!-- Botón para agregar el vehículo -->
             <button type="submit" class="add-button">Agregar Vehículo</button>
         </form>
+        <!-- Botón para volver a la página anterior -->
         <button class="back-button" onclick="goBack()">Volver</button>
     </div>
 
-    <!-- Footer -->
+    <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -99,6 +115,7 @@
         <p class="copyright">
             Copyright © 2024 <span>Website</span>. All rights reserved.
         </p>
+        <!-- Iconos de redes sociales -->
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -106,26 +123,29 @@
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
-<script type="module">
-       import { cerrarsesion } from '../Firabase/Salir.js';
+
+    <!-- Script para cerrar sesión usando Firebase -->
+    <script type="module">
+        import { cerrarsesion } from '../Firabase/Salir.js';
         window.logout = async function logout() {
-            await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
+            await cerrarsesion(); // Llama a la función de cerrar sesión
         }
-</script>
+    </script>
+
+    <!-- Scripts para manejar la navegación -->
     <script>
-        
         // Función para volver a la página anterior
         function goBack() {
             window.history.back();
         } 
         
-        // Mostrar/Ocultar el menú desplegable
+        // Función para mostrar/ocultar el menú desplegable
         function toggleDropdown() {
             const menu = document.getElementById('dropdown-menu');
             menu.classList.toggle('show');
         }
 
-        // Cerrar el menú si se hace clic fuera de él
+        // Cerrar el menú desplegable si se hace clic fuera de él
         window.onclick = function(event) {
             const menu = document.getElementById('dropdown-menu');
             if (!event.target.matches('.profile-image')) {
@@ -135,6 +155,5 @@
             }
         };
     </script>
-
 </body>
 </html>
