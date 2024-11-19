@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadatos básicos del documento -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Vehículo</title>
+  <!-- Fuente personalizada desde Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Archivo de estilos CSS -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Librería de iconos Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Encabezado del sitio -->
     <header class="navbar">
         <div class="container">
             <div class="logo">
+                <!-- Logo de la aplicación -->
                 <img src="../images/logo.png" alt="Naviway Logo" class="logo-image">
             </div>
+            <!-- Menú de navegación principal -->
             <nav class="nav-links">
                 <a href="../../index.html">Home</a>
                 <a href="../about/about.html">About</a>
@@ -22,10 +28,11 @@
                 <a href="#">Contact</a>
             </nav>
             
-            <!-- Imagen del Usuario y Menú Desplegable -->
+            <!-- Imagen de perfil de usuario y menú desplegable -->
             <div class="user-profile" onclick="toggleDropdown()">
                 <img src="../images/user-profile.jpg" alt="User Profile" class="profile-image">
                 <div id="dropdown-menu" class="dropdown-menu">
+                    <!-- Opciones dentro del menú desplegable -->
                     <a href="../user/accountAdmin.html">Account</a>
                     <a href="../vehicles/vehicles.html">Vehicles</a>
                     <a href="../map.html">Mapa</a>
@@ -36,12 +43,14 @@
         </div>
     </header>
 
-    <!-- Contenido Principal -->
+    <!-- Contenedor principal para editar los datos del vehículo -->
     <div class="vehicle-details-container">
         <h1>Editar Vehículo</h1>
         <form id="edit-vehicle-form">
+            <!-- Estructura dividida en dos columnas -->
             <div class="form-row">
                 <div class="form-column">
+                    <!-- Campos de entrada para los detalles del vehículo -->
                     <label for="modelo">Modelo:</label>
                     <input type="text" id="modelo" name="modelo" required>
 
@@ -64,6 +73,7 @@
                     <input type="text" id="dueno-celular" name="dueno-celular" required>
                 </div>
                 <div class="form-column">
+                    <!-- Campos de entrada adicionales relacionados con el vehículo -->
                     <label for="carroceria">Tipo de Carrocería:</label>
                     <input type="text" id="carroceria" name="carroceria" required>
 
@@ -86,12 +96,13 @@
                     <input type="text" id="conductor-telefono" name="conductor-telefono" required>
                 </div>
             </div>
+            <!-- Botones para guardar cambios y regresar -->
             <button type="button" class="btn save" onclick="saveChanges()">Guardar Cambios</button>
             <button type="button" class="btn back" onclick="goBack()">Volver</button>
         </form>
     </div>
 
-    <!-- Footer -->
+    <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="../images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -100,6 +111,7 @@
             Copyright © 2024 <span>Website</span>. All rights reserved.
         </p>
         <div class="social-icons">
+            <!-- Iconos de redes sociales -->
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -107,45 +119,47 @@
         </div>
     </footer>
 <script type="module">
-       import { cerrarsesion } from '../Firabase/Salir.js';
-        window.logout = async function logout() {
-            await cerrarsesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
-        }
+    <!-- Lógica para el cierre de sesión -->
+    import { cerrarsesion } from '../Firabase/Salir.js';
+    window.logout = async function logout() {
+        await cerrarsesion();
+    }
 </script>
 
-    <script>
-        let changesSaved = false;
+<script>
+    let changesSaved = false;
 
-        function saveChanges() {
-            // Aquí puedes agregar la lógica para guardar los cambios
-            changesSaved = true;
-            alert("Cambios guardados exitosamente.");
-        }
+    function saveChanges() {
+        // Función para guardar los cambios realizados
+        changesSaved = true;
+        alert("Cambios guardados exitosamente.");
+    }
 
-        function goBack() {
-            if (!changesSaved) {
-                const confirmLeave = confirm("No has guardado los cambios. ¿Estás seguro de que quieres salir?");
-                if (!confirmLeave) {
-                    return;
-                }
+    function goBack() {
+        // Alerta si el usuario intenta salir sin guardar cambios
+        if (!changesSaved) {
+            const confirmLeave = confirm("No has guardado los cambios. ¿Estás seguro de que quieres salir?");
+            if (!confirmLeave) {
+                return;
             }
-            window.history.back();
         }
+        window.history.back();
+    }
 
-        function toggleDropdown() {
-            const menu = document.getElementById('dropdown-menu');
-            menu.classList.toggle('show');
-        }
+    function toggleDropdown() {
+        // Mostrar/ocultar el menú desplegable del usuario
+        const menu = document.getElementById('dropdown-menu');
+        menu.classList.toggle('show');
+    }
 
-        window.onclick = function(event) {
-            const menu = document.getElementById('dropdown-menu');
-            if (!event.target.matches('.profile-image')) {
-                if (menu.classList.contains('show')) {
-                    menu.classList.remove('show');
-                }
+    window.onclick = function(event) {
+        const menu = document.getElementById('dropdown-menu');
+        if (!event.target.matches('.profile-image')) {
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
             }
-        };
-    </script>
-
+        }
+    };
+</script>
 </body>
 </html>
