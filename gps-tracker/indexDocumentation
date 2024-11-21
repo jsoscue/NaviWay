@@ -1,12 +1,10 @@
 Descripción General
-Este código HTML y JavaScript crea una página web de inicio para el sitio Naviway. 
-La página incluye elementos de navegación, un área de contenido principal con información sobre el servicio, un menú desplegable para el perfil de usuario 
-y un pie de página con enlaces a redes sociales.
+Este código HTML y JavaScript crea una página web de inicio para el sitio Naviway GPS. 
+La página incluye elementos de navegación, un área de contenido principal con información sobre el servicio, 
+un menú desplegable para el perfil de usuario y un pie de página con enlaces a redes sociales.
 
 Desglose del Código
 Encabezado (<head>):
-
-Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea bien en dispositivos móviles.
 
 Título: Define el título de la página como "Naviway".
 
