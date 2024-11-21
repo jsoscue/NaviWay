@@ -6,7 +6,6 @@ También hay funcionalidad para un menú desplegable asociado con la imagen de p
 Desglose del Código
 Encabezado (<head>):
 
-Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
 
 Título: Define el título de la página como "Detalles del Vehículo".
 
