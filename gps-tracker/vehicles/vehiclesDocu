@@ -1,13 +1,11 @@
 Descripción General
 Este código HTML crea una página web que lista vehículos monitoreados y proporciona detalles básicos sobre cada uno. 
 La página incluye una cabecera con enlaces de navegación, un contenedor con información sobre los vehículos, 
-y un pie de página con enlaces a redes sociales. También hay funcionalidad para un menú desplegable asociado con la imagen de perfil del usuario y 
-la opción de cerrar sesión usando Firebase.
+y un pie de página con enlaces a redes sociales. 
+También hay funcionalidad para un menú desplegable asociado con la imagen de perfil del usuario y la opción de cerrar sesión usando Firebase.
 
 Desglose del Código
 Encabezado (<head>):
-
-Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
 
 Título: Define el título de la página como "Vehículos Monitoreados".
 
@@ -33,7 +31,8 @@ Imagen de perfil del usuario que, al hacer clic, muestra un menú desplegable co
 
 Contenedor de Vehículos (<div class="vehicle-container">):
 
-Información del Vehículo: Cada vehículo muestra sus placas y número de orden en campos de texto deshabilitados. Los detalles del vehículo son accesibles a través de enlaces que incluyen parámetros en la URL (vehicle-details.html?placas=...&orden=...).
+Información del Vehículo: Cada vehículo muestra sus placas y número de orden en campos de texto deshabilitados. 
+Los detalles del vehículo son accesibles a través de enlaces que incluyen parámetros en la URL (vehicle-details.html?placas=...&orden=...).
 
 Botón para Volver: Permite al usuario regresar a la página anterior.
 
