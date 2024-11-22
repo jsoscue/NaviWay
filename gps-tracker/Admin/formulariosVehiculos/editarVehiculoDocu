@@ -1,7 +1,8 @@
 Propósito General
 Esta página permite al usuario editar los datos de un vehículo registrado en el sistema. Proporciona un formulario estructurado para ingresar o modificar información clave del vehículo, del propietario y del conductor.
 
-2. Estructura y Funcionamiento
+Estructura y Funcionamiento
+
 Encabezado (header)
 Logo y Navegación:
 Muestra el logotipo de la aplicación en la parte superior izquierda.
@@ -30,7 +31,8 @@ Regresar a la Página Anterior:
 Verifica si los cambios han sido guardados; si no, solicita confirmación antes de permitir al usuario regresar.
 Cerrar Sesión:
 Llama a una función externa (cerrarsesion) para procesar el cierre de sesión del usuario.
-3. Elementos Técnicos Adicionales
+
+Elementos Técnicos Adicionales
 Estilo:
 Usa fuentes de Google Fonts (Mulish) para un diseño limpio y profesional.
 Integra un archivo CSS externo (styles.css) para personalizar los estilos de la página.
