@@ -1,9 +1,8 @@
 Desglose del Código
 Encabezado (<head>):
 
-Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
 
-Título: Define el título de la página como "Sign In - Naviway".
+Título: Define el título de la página como "Sign In - Naviway", esta pagina sirve para el inicio de sesión del usuario, para la cual cuenta con un formulario para inicio de sesión.
 
 Enlaces a Hojas de Estilo:
 
@@ -12,8 +11,6 @@ Google Fonts: Importa la fuente "Mulish".
 Archivo CSS externo (Style.css): Contiene los estilos personalizados del sitio.
 
 Font Awesome: Permite el uso de íconos en el sitio.
-
-Script de Google reCAPTCHA: Añade protección anti-bot al formulario.
 
 Firebase: Importa el módulo registrareiniciar.js para manejar el registro y la autenticación.
 
