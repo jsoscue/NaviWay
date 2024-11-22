@@ -9,11 +9,16 @@ Descripción de las Secciones y Funcionalidades:
 Cabecera del Sitio (Header):
 
 Logo y Barra de Navegación: La parte superior de la página contiene el logo de la empresa "Naviway" y una barra de navegación con enlaces a las secciones principales del sitio como "Home", "About".
-Menú de Usuario: Al lado derecho, el menú muestra la foto de perfil del usuario. Al hacer clic en ella, se despliega un menú con enlaces a otras secciones relacionadas con el usuario, como su cuenta administrativa, la sección de vehículos, el mapa, y las rutas. También hay un botón para cerrar sesión.
+Menú de Usuario: Al lado derecho, el menú muestra la foto de perfil del usuario. Al hacer clic en ella, se despliega un menú con enlaces a otras secciones relacionadas con el usuario, como su cuenta administrativa, 
+la sección de vehículos, el mapa, y las rutas. También hay un botón para cerrar sesión.
+
 Contenedor de Vehículos:
 
-Esta sección es donde se muestra la información de los vehículos registrados en la plataforma. Cada vehículo está representado por un "botón" que, al hacer clic, redirige a una página de detalles específicos del vehículo (usando parámetros como las placas del vehículo y un número de orden).
-Vehículos Ejemplo: Se incluyen dos vehículos de ejemplo con placas "ABC123" y "XYZ789". Cada vehículo tiene información asociada como su número de placas y el número de orden. En un sistema real, estos datos podrían ser dinámicos y cargarse desde una base de datos.
+Esta sección es donde se muestra la información de los vehículos registrados en la plataforma. Cada vehículo está representado por un "botón" que, al hacer clic, redirige a una página de detalles específicos del vehículo 
+(usando parámetros como las placas del vehículo y un número de orden).
+Vehículos Ejemplo: Se incluyen dos vehículos de ejemplo con placas "ABC123" y "XYZ789". Cada vehículo tiene información asociada como su número de placas y el número de orden. 
+En un sistema real, estos datos podrían ser dinámicos y cargarse desde una base de datos.
+
 Botón para Volver:
 
 Hay un botón que permite al usuario regresar a la página anterior en su historial de navegación, utilizando window.history.back(). Esto es útil si el usuario navega dentro de la aplicación web y necesita regresar sin tener que hacer clic en los botones del navegador.
@@ -22,6 +27,7 @@ Pie de Página (Footer):
 El pie de página contiene un logo de la empresa y un mensaje de derechos de autor, que indica que todos los derechos están reservados por "Website". También incluye enlaces a redes sociales como Facebook, Instagram, LinkedIn y YouTube.
 Funcionalidades Interactivas en JavaScript:
 
-Cerrar sesión: El código utiliza una función llamada cerrarsesion() importada desde otro archivo JavaScript para manejar el cierre de sesión del usuario, asegurando que su sesión se termine correctamente en el sistema (probablemente a través de Firebase, que es mencionado en el código).
+Cerrar sesión: El código utiliza una función llamada cerrarsesion() importada desde otro archivo JavaScript para manejar el cierre de sesión del usuario, asegurando que su sesión se termine correctamente en el sistema (probablemente a través de Firebase,
+que es mencionado en el código).
 Menú Desplegable del Usuario: Se incluye un comportamiento interactivo para mostrar y ocultar el menú desplegable cuando el usuario hace clic en su imagen de perfil. Si el usuario hace clic fuera del menú, este se cierra automáticamente.
 Volver a la Página Anterior: La función goBack() permite regresar a la página anterior en el historial del navegador.
