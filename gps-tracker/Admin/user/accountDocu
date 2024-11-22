@@ -6,8 +6,6 @@ También gestiona la autenticación y el cierre de sesión de usuarios mediante 
 Desglose del Código
 Encabezado (<head>):
 
-Metadatos Básicos: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
-
 Título: Define el título de la página como "Naviway".
 
 Enlaces a Hojas de Estilo:
