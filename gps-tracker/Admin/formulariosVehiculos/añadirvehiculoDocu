@@ -1,5 +1,7 @@
 Descripción General del Código
-El código es una página web que permite agregar nuevos vehículos a un sistema, probablemente como parte de una aplicación de gestión de transporte. Esta página incluye un formulario detallado para ingresar información sobre vehículos y sus conductores. Además, cuenta con funcionalidades de navegación, perfil de usuario, y un pie de página con iconos de redes sociales.
+El código es una página web que permite agregar nuevos vehículos al sistema de seguimeinto GPS. 
+Esta página incluye un formulario detallado para ingresar información sobre vehículos y sus conductores.
+Además, cuenta con funcionalidades de navegación, perfil de usuario, y un pie de página con iconos de redes sociales.
 
 Funcionalidades Principales del Código
 Formulario para Agregar Vehículos:
@@ -27,17 +29,14 @@ Estilo y Diseño:
 
 Utiliza CSS externo y fuentes personalizadas desde Google Fonts.
 Incluye iconos de redes sociales proporcionados por Font Awesome.
-Adaptación a Dispositivos Móviles:
 
-Es compatible con dispositivos móviles gracias a la etiqueta <meta name="viewport">.
 Footer Informativo:
 
 Muestra un pie de página con:
 El logo de la empresa.
 Un mensaje de derechos de autor.
 Enlaces a redes sociales.
-Propósito del Código
-El propósito de esta página es proporcionar una interfaz intuitiva y funcional para que los usuarios puedan registrar vehículos en un sistema administrativo, posiblemente utilizado por empresas de transporte o servicios relacionados con la gestión de flotas. Este formulario recopila información clave sobre los vehículos, dueños y conductores para almacenarla o procesarla en un sistema más amplio.
+
 
 Componentes Técnicos Clave
 Frontend: Estructura creada con HTML, con estilos visuales provenientes de un archivo CSS externo y fuentes personalizadas.
@@ -46,4 +45,4 @@ Control de interactividad como mostrar/ocultar el menú desplegable.
 Navegación entre páginas y funciones relacionadas con la sesión.
 Integración con Firebase: Utilización de Firebase para gestionar el cierre de sesión.
 Navegación y Organización: Navegación fácil entre secciones y uso claro de componentes visuales como botones y formularios.
-En resumen, esta página es una parte integral de una aplicación web de gestión de transporte, con enfoque en usabilidad y diseño.
+
