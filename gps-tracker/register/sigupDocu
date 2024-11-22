@@ -1,12 +1,10 @@
 Descripción General
 Este código HTML crea una página web para Naviway, una plataforma que parece estar diseñada para el registro de usuarios. 
 La página incluye una barra de navegación, un formulario de registro en la sección principal y un pie de página con enlaces a redes sociales. 
-También incorpora funcionalidades como Google reCAPTCHA para evitar bots y scripts de Firebase para manejar el registro de usuarios.
 
 Desglose del Código
 Encabezado (<head>):
 
-Meta Tags: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
 
 Título: Define el título de la página como "Naviway".
 
@@ -20,7 +18,6 @@ Font Awesome: Permite el uso de íconos en el sitio.
 
 Scripts:
 
-Google reCAPTCHA: Añade protección anti-bot al formulario.
 
 Firebase: Importa el módulo registrareiniciar.js para manejar el registro y la autenticación.
 
