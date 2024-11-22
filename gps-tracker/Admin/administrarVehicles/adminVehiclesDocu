@@ -1,16 +1,16 @@
-El código proporcionado es una estructura básica para una página web interactiva destinada a la administración y visualización de vehículos dentro del sistema Naviway. A continuación, una descripción más detallada:
+El código proporcionado es una estructura básica para una página web interactiva destinada a la administración y visualización de vehículos dentro del sistema Naviway.
 
 Propósito y Funcionalidad:
 Cabecera (Header):
 
 Logo de Naviway: Se incluye un logotipo de la empresa al inicio de la página.
-Barra de navegación: La barra contiene enlaces para redirigir al usuario a distintas secciones del sitio como "Home", "About", "Service" y "Contact".
+Barra de navegación: La barra contiene enlaces para redirigir al usuario a distintas secciones del sitio como "Home", "About".
 Menú desplegable del usuario: Este área permite al usuario navegar a diferentes secciones administrativas como "Account", "Vehicles", "Mapa" y "Rutas". También incluye un botón para cerrar sesión.
 Contenedor de Vehículos:
 
 <div class="vehicles-container">: Este contenedor muestra varios botones interactivos que redirigen a la página de detalles de cada vehículo.
-Botones de Vehículo: Cada botón representa un vehículo, con información como el número de placas y un número de orden único. Al hacer clic en un botón, el usuario es redirigido a una página donde se muestran más detalles específicos sobre ese vehículo.
-Botón "Volver": Este botón permite al usuario regresar a la página anterior en el historial del navegador.
+Botones de Vehículo: Cada botón representa un vehículo, con información como el número de placas y un número de orden único, tambien se encuentran los botones editar vehiculo que redirige al formulario para editar la informacion del vehiculo, el boton eliminar
+que simula la funcion de eliminar un vehiculo y el boton agregar vehiculo que simularaía el agregar un nuevo vehivulo.
 
 Pie de página (Footer):
 
