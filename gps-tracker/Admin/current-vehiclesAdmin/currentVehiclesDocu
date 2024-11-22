@@ -1,12 +1,14 @@
-Este código corresponde a una página web que forma parte de un sistema llamado Naviway. La página está diseñada para mostrar una lista de vehículos, permitir la navegación entre distintas secciones de la plataforma y gestionar la sesión del usuario. A continuación, te explico lo que hace cada parte del código y el propósito general:
+La página está diseñada para mostrar una lista de vehículos y permitir la navegación entre distintas secciones de la plataforma y gestionar la sesión del usuario. 
 
 Propósito General
-El código presenta una interfaz web para la administración de vehículos dentro de la plataforma Naviway, la cual parece estar orientada a empresas de transporte o sistemas de gestión de flotas. El sistema permite ver información sobre los vehículos, acceder a detalles específicos y navegar por distintas secciones del sitio web (como el perfil del usuario, rutas, y mapa). Además, el código gestiona la sesión del usuario, permitiéndole cerrar sesión de manera segura.
+El código presenta una interfaz web para la administración de vehículos dentro de la plataforma Naviway. 
+El sistema permite ver información sobre los vehículos, acceder a detalles específicos y navegar por distintas secciones del sitio web 
+(como el perfil del usuario, rutas, y mapa). Además, el código gestiona la sesión del usuario, permitiéndole cerrar sesión de manera segura.
 
 Descripción de las Secciones y Funcionalidades:
 Cabecera del Sitio (Header):
 
-Logo y Barra de Navegación: La parte superior de la página contiene el logo de la empresa "Naviway" y una barra de navegación con enlaces a las secciones principales del sitio como "Home", "About", "Service", y "Contact". Actualmente, "Service" y "Contact" no tienen funcionalidad, pero en un proyecto completo podrían redirigir a páginas relevantes.
+Logo y Barra de Navegación: La parte superior de la página contiene el logo de la empresa "Naviway" y una barra de navegación con enlaces a las secciones principales del sitio como "Home", "About".
 Menú de Usuario: Al lado derecho, el menú muestra la foto de perfil del usuario. Al hacer clic en ella, se despliega un menú con enlaces a otras secciones relacionadas con el usuario, como su cuenta administrativa, la sección de vehículos, el mapa, y las rutas. También hay un botón para cerrar sesión.
 Contenedor de Vehículos:
 
