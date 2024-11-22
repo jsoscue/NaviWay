@@ -31,13 +31,12 @@ Funcionalidad Principal
 Crear Rutas: Permite a los usuarios ingresar detalles de una nueva ruta y enviarlos mediante un formulario.
 Navegación: Facilita la navegación entre diferentes secciones del sitio web.
 Perfil de Usuario: Proporciona acceso rápido a la cuenta del usuario y opciones relacionadas, incluyendo la capacidad de cerrar sesión.
-Si necesitas más detalles sobre alguna parte específica del código o tienes alguna otra pregunta, ¡házmelo saber!
-
 
 RUTAS.JS
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Descripción General
-Este código añade un evento de escucha al formulario con el ID route-form. Cuando el formulario se envía, el código previene el comportamiento por defecto del formulario (que normalmente recargaría la página) y redirige al usuario a una página de mapa (map.html) con los valores de inicio y destino como parámetros en la URL.
+Este código añade un evento de escucha al formulario con el ID route-form. Cuando el formulario se envía, el código previene el comportamiento por defecto del formulario (que normalmente recargaría la página) 
+y redirige al usuario a una página de mapa (map.html) con los valores de inicio y destino como parámetros en la URL.
 
 Funcionalidad del Código
 Evento de Envío del Formulario:
