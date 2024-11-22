@@ -1,10 +1,10 @@
-Este código corresponde a la estructura de una página web destinada a la administración de vehículos en un sistema llamado Naviway. Es parte de una plataforma web, probablemente utilizada por administradores o usuarios con privilegios para gestionar flotas de vehículos, como autobuses, y acceder a funcionalidades adicionales.
+Este código corresponde a la estructura de la página web destinada a la administración de vehículos para gestionar flotas de vehículos, como autobuses, y acceder a funcionalidades adicionales.
 
 Resumen de lo que hace el código:
 Estructura del Documento:
 
 El código está construido en HTML, con la inclusión de CSS para los estilos y JavaScript para la interactividad.
-La página está diseñada para ser accesible en dispositivos móviles y de escritorio, gracias a la inclusión del meta tag viewport.
+
 Cabecera (Header):
 
 Logo y Barra de Navegación: Contiene el logo de Naviway y enlaces de navegación a páginas como Home, About, Service y Contact.
