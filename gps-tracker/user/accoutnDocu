@@ -1,5 +1,5 @@
 Descripción General
-Este código HTML crea una página web denominada "Naviway", diseñada para mostrar la cuenta del usuario. La página incluye una cabecera con enlaces de navegación, 
+Este código HTML crea una página web, diseñada para mostrar la cuenta del usuario. La página incluye una cabecera con enlaces de navegación, 
 un contenedor principal que muestra la información del perfil del usuario, y un pie de página con enlaces a redes sociales. 
 También integra funcionalidades de autenticación y gestión de datos del usuario utilizando Firebase.
 
