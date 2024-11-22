@@ -1,12 +1,10 @@
 Descripción General
-Este código HTML crea una página web llamada Naviway-Map que presenta un mapa interactivo para el monitoreo en tiempo real de vehículos. 
+Este código HTML crea una página web llamada Naviway-Map que presenta un mapa interactivo en modo administrador para el monitoreo en tiempo real de vehículos. 
 La página incluye una barra de navegación, una pantalla de bienvenida, un contenedor para el mapa, y un pie de página con enlaces a redes sociales. 
 También gestiona la autenticación y el cierre de sesión de usuarios mediante Firebase.
 
 Desglose del Código
 Encabezado (<head>):
-
-Metadatos Básicos: Configuran la codificación de caracteres (UTF-8) y el viewport para asegurar que la página se vea correctamente en dispositivos móviles.
 
 Título: Define el título de la página como "Naviway-Map".
 
