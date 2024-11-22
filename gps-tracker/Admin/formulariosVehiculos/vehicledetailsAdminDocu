@@ -1,4 +1,6 @@
-es una página web que está diseñada para mostrar los detalles de un vehículo almacenados en Firebase Firestore. La página incluye una autenticación de usuario y una interfaz de usuario que muestra la información de un vehículo en un formulario, el cual se llena automáticamente con los datos obtenidos de la base de datos de Firebase. Aquí te explico cómo funciona:
+es una página web que está diseñada para mostrar los detalles de un vehículo almacenados en Firebase Firestore. 
+La página incluye una autenticación de usuario y una interfaz de usuario que muestra la información de un vehículo en un formulario, 
+el cual se llena automáticamente con los datos obtenidos de la base de datos de Firebase. 
 
 Descripción general del código:
 Autenticación de usuario:
@@ -22,6 +24,7 @@ Al hacer clic en el botón de cerrar sesión, la función logout cierra la sesi�
 Funciones de navegación:
 
 La página tiene un botón de "regresar" (<button class="back-button">), que al hacer clic redirige al usuario a la página anterior en su historial de navegación. Esto se maneja con la función window.history.back().
+
 Componentes clave:
 Autenticación de usuario: Asegura que solo los usuarios autenticados puedan acceder a la página y ver los detalles del vehículo.
 Base de datos de Firebase Firestore: Se usa para almacenar y recuperar los datos de los vehículos.
