@@ -35,7 +35,13 @@
         
         <!-- Perfil del usuario (oculto inicialmente) -->
         <div id="profile-container" style="display: none;">
-          <img id="profile-picture" class="profile-picture" src="/inicio/imagenes/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
+          <img id="profile-picture" class="profile-picture" src="/inicio/images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
+          <div id="dropdown-menu" class="dropdown-menu">
+            <a href="../user/account.html">Account</a>
+            <a href="../vehicles/vehicles.html">Vehicles</a>
+            <a href="../map/map.html">Mapa</a>
+            <button class="logout-button" onclick="logout()">Salir</button>
+          </div>
         </div>
       </div>
     </div>
@@ -59,14 +65,6 @@
         </div>
       </div>
     </section>
-  </div>
-
-  <!-- Menú desplegable -->
-  <div id="dropdown-menu" class="dropdown-menu" style="display: none;">
-    <a href="../user/account.html">Account</a>
-    <a href="../vehicles/vehicles.html">Vehicles</a>
-    <a href="../map/map.html">Mapa</a>
-    <button class="logout-button" onclick="logout()">Salir</button>
   </div>
 
   <!-- Pie de página -->
@@ -106,7 +104,7 @@
         profileContainer.style.display = 'block';
 
         // Cargar imagen y configuración de usuario
-        profilePicture.src = user.photoURL || 'images/default-user.png';
+        profilePicture.src = user.photoURL || '/inicio/images/user-profile.jpg';
       } else {
         // Usuario no autenticado
         signupBtn.style.display = 'inline-block';
@@ -117,15 +115,23 @@
 
     // Alternar visibilidad del menú desplegable
     function toggleDropdown() {
-      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+      dropdownMenu.classList.toggle('show');
     }
 
+    // Cerrar el menú desplegable si se hace clic fuera de él
+    window.onclick = function(event) {
+      if (!event.target.matches('.profile-picture') && !event.target.matches('.dropdown-menu *')) {
+        if (dropdownMenu.classList.contains('show')) {
+          dropdownMenu.classList.remove('show');
+        }
+      }
+    };
+
     // Cerrar sesión
-    function logout() {
-      cerrar();
+    async function logout() {
+      await cerrar();
       window.location.href = 'index.html';
     }
   </script>
 </body>
 </html>
-
