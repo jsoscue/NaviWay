@@ -84,17 +84,32 @@
   </footer>
 
   <script type="module">
+    // Alternar visibilidad del menú desplegable
+    function toggleDropdown() {
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      dropdownMenu.classList.toggle('show');
+    }
+
+    // Cerrar el menú desplegable si se hace clic fuera de él
+    window.onclick = function(event) {
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      if (!event.target.matches('.profile-picture') && !event.target.matches('.dropdown-menu *')) {
+        if (dropdownMenu.classList.contains('show')) {
+          dropdownMenu.classList.remove('show');
+        }
+      }
+    };
+
     // Importar funciones de Firebase
     import { cerrar } from '../Firebase/registrareiniciar.js';
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 
     const auth = getAuth();
     const signupBtn = document.getElementById('signup-btn');
     const signinBtn = document.getElementById('signin-btn');
     const profileContainer = document.getElementById('profile-container');
     const profilePicture = document.getElementById('profile-picture');
-    const dropdownMenu = document.getElementById('dropdown-menu');
-
+    
     // Verificar estado de autenticación
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -112,20 +127,6 @@
         profileContainer.style.display = 'none';
       }
     });
-
-    // Alternar visibilidad del menú desplegable
-    function toggleDropdown() {
-      dropdownMenu.classList.toggle('show');
-    }
-
-    // Cerrar el menú desplegable si se hace clic fuera de él
-    window.onclick = function(event) {
-      if (!event.target.matches('.profile-picture') && !event.target.matches('.dropdown-menu *')) {
-        if (dropdownMenu.classList.contains('show')) {
-          dropdownMenu.classList.remove('show');
-        }
-      }
-    };
 
     // Cerrar sesión
     async function logout() {
