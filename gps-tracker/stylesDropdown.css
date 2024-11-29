@@ -1,0 +1,99 @@
+/* map/style.css */
+#dropdown-menu-common, #dropdown-menu-admin {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #ffffff;  /* Mismo fondo que el header */
+    color: #7bea6d;  /* Color de texto consistente */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+#dropdown-menu-common a, #dropdown-menu-admin a {
+    display: block;
+    color: #7bea6d;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#dropdown-menu-common a:hover, #dropdown-menu-admin a:hover {
+    background-color: #4CAF50;  /* Efecto hover coherente */
+    color: white;
+}
+
+.logout-button {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: #7bea6d;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Mostrar menú al activarlo */
+#dropdown-menu-common.show, #dropdown-menu-admin.show {
+    display: block;
+}
+
+/* map/style.css */
+#dropdown-menu-common, #dropdown-menu-admin {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #ffffff;  /* Mismo fondo que el header */
+    color: #7bea6d;  /* Color de texto consistente */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+#dropdown-menu-common a, #dropdown-menu-admin a {
+    display: block;
+    color: #7bea6d;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#dropdown-menu-common a:hover, #dropdown-menu-admin a:hover {
+    background-color: #4CAF50;  /* Efecto hover coherente */
+    color: white;
+}
+
+.logout-button {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: #7bea6d;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Mostrar menú al activarlo */
+#dropdown-menu-common.show, #dropdown-menu-admin.show {
+    display: block;
+}
