@@ -1,42 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Metadatos básicos para la configuración de la página -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naviway - About</title>
-  <!-- Enlace a la fuente Mulish de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Enlace a la hoja de estilos CSS -->
-  <link rel="stylesheet" href="stylesa.css">
-  <!-- Enlace a los íconos de Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Script de Google reCAPTCHA para protección contra bots -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<title>Naviway - About</title>
+  <link rel="stylesheet" href="stylesa.css">
+  <link rel="stylesheet" href="/map/style.css">
+  <link rel="stylesheet" href="/stylesDropdown.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-  <!-- Encabezado de la página -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">
-        <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
-      </div>
-      <nav class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="#">Service</a>
-        <a href="#">Contact</a>
-      </nav>
-      <div class="btn-container">
-        <button class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
-        <button class="btn signin" onclick="window.location.href='../inicio/signin.html';">Sign in</button>
-        <div id="profile-container" style="display: none;">
-          <img id="profile-picture" class="profile-picture" src="images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
+  <div id="header-container">
+    <!-- Header para usuarios no autenticados -->
+    <header id="default-header" class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about/about.html">About</a>
+                <a href="#">Service</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="btn-container">
+                <button id="signup-btn" class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+                <button id="signin-btn" class="btn signin" onclick="window.location.href='/inicio/signin.html';">Sign in</button>
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
+    </header>
+
+    <!-- Header para usuarios autenticados -->
+    <header id="logged-in-header" class="navbar" style="display: none;">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Naviway Logo" class="logo-image">
+            </div>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about/about.html">About</a>
+                <a href="#">Service</a>
+                <a href="#">Contact</a>
+            </nav>
+            <!-- Menú desplegable para usuarios comunes -->
+            <div class="user-profile" id="user-profile-common" onclick="toggleDropdown('dropdown-menu-common')">
+                <img src="" alt="User Profile" class="profile-image" id="user-profile-image">
+                <div id="dropdown-menu-common" class="dropdown-menu">
+                    <a href="/user/account.html">Account</a>
+                    <a href="/vehicles/vehicles.html">Vehicles</a>
+                    <a href="/map/mapUser.html">Mapa</a>
+                    <button class="logout-button" onclick="logout()">Salir</button>
+                </div>
+            </div>
+            <!-- Menú desplegable para administradores -->
+            <div class="user-profile" id="user-profile-admin" style="display: none;" onclick="toggleDropdown('dropdown-menu-admin')">
+                <img src="" alt="User Profile" class="profile-image" id="user-profile-image-admin">
+                <div id="dropdown-menu-admin" class="dropdown-menu">
+                    <a href="/Admin/user/accountAdmin.html">Account</a>
+                    <a href="/Admin/adminVehicles/admin.html">Vehicles</a>
+                    <a href="/Admin/map.html">Mapa</a>
+                    <a href="/Admin/rutas/rutas.html">Rutas</a>
+                    <button class="logout-button" onclick="logout()">Salir</button>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
 
   <!-- Sección About -->
   <main class="about-section">
@@ -77,7 +108,7 @@
     </section>
   </main>
 
-  <!-- Pie de Página -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-logo">
       <img src="images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -93,76 +124,72 @@
     </div>
   </footer>
 
-  <!-- Scripts para manejo de autenticación y sesión de usuario -->
   <script type="module">
-    import { cerrarSesion } from '../Firebase/registrareiniciar.js';
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+    import { cerrar } from '../Firebase/registrareiniciar.js';
 
-    const auth = getAuth();
+    async function loadHeader() {
+        const auth = getAuth();
+        const db = getFirestore();
 
-    document.addEventListener('DOMContentLoaded', function() {
-      // Verificación de inicio de sesión real
-      onAuthStateChanged(auth, function(user) {
-        if (user) {
-          // Usuario está autenticado
-          localStorage.setItem('loggedIn', 'true');
-          updateAuthButtons(user);
-        } else {
-          // Usuario no está autenticado
-          localStorage.setItem('loggedIn', 'false');
-          updateAuthButtons(null);
-        }
-      });
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('userPhotoURL', user.photoURL || '/inicio/images/user-profile.jpg');
+                document.getElementById('default-header').style.display = 'none';
+                document.getElementById('logged-in-header').style.display = 'block';
 
-      // Verificar el estado de inicio de sesión almacenado en localStorage
-      const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-      if (isLoggedIn) {
-        const userPhotoURL = localStorage.getItem('userPhotoURL');
-        updateAuthButtons({ photoURL: userPhotoURL });
-      } else {
-        updateAuthButtons(null);
-      }
-    });
+                const userProfileImage = document.getElementById('user-profile-image');
+                const userProfileImageAdmin = document.getElementById('user-profile-image-admin');
+                userProfileImage.src = localStorage.getItem('userPhotoURL');
+                userProfileImageAdmin.src = localStorage.getItem('userPhotoURL');
 
-    function updateAuthButtons(user) {
-      if (user) {
-        // Mostrar foto de perfil si está autenticado
-        const profileImg = document.getElementById('profile-picture');
-        profileImg.src = user.photoURL || 'images/user-profile.jpg'; // URL de la foto de perfil del usuario
-        profileImg.style.display = 'block';
-        document.querySelector('.btn.signup').style.display = 'none';
-        document.querySelector('.btn.signin').style.display = 'none';
-      } else {
-        // Mostrar botones de Sign up y Sign in si no ha iniciado sesión
-        document.querySelector('.btn.signup').style.display = 'inline-block';
-        document.querySelector('.btn.signin').style.display = 'inline-block';
-        document.getElementById('profile-picture').style.display = 'none';
-      }
+                const userDoc = await getDoc(doc(db, "drivers", user.uid));
+                if (userDoc.exists() && userDoc.data().administrador) {
+                    document.getElementById('user-profile-common').style.display = 'none';
+                    document.getElementById('user-profile-admin').style.display = 'block';
+                } else {
+                    document.getElementById('user-profile-common').style.display = 'block';
+                    document.getElementById('user-profile-admin').style.display = 'none';
+                }
+            } else {
+                localStorage.setItem('loggedIn', 'false');
+                document.getElementById('default-header').style.display = 'block';
+                document.getElementById('logged-in-header').style.display = 'none';
+            }
+        });
     }
 
-    async function logout() {
-      await cerrarSesion(); // Llama a la función de cerrar sesión de registrareiniciar.js
-      localStorage.setItem('loggedIn', 'false'); // Marcar al usuario como deslogueado
-      localStorage.removeItem('userPhotoURL'); // Eliminar la URL de la foto de perfil
-      updateAuthButtons(null); // Actualizar los botones
-      document.getElementById('dropdown-menu').classList.remove('show'); // Ocultar menú
+    document.addEventListener('DOMContentLoaded', loadHeader);
+</script>
+
+<script>
+    function logout() {
+        cerrar().then(() => {
+            localStorage.setItem('loggedIn', 'false');
+            localStorage.removeItem('userPhotoURL');
+            window.location.href = '../inicio/index.html';
+        });
     }
 
-    // Manejar clics fuera del menú para cerrarlo
+    function toggleDropdown(menuId) {
+        const menu = document.getElementById(menuId);
+        menu.classList.toggle('show');
+    }
+
     window.onclick = function(event) {
-      const menu = document.getElementById('dropdown-menu');
-      if (!event.target.matches('.profile-picture') && !event.target.matches('#dropdown-menu *')) {
-        if (menu.classList.contains('show')) {
-          menu.classList.remove('show');
+        const commonMenu = document.getElementById('dropdown-menu-common');
+        const adminMenu = document.getElementById('dropdown-menu-admin');
+        if (!event.target.matches('.profile-image') && !event.target.matches('.dropdown-menu') && !event.target.matches('.dropdown-menu *')) {
+            if (commonMenu.classList.contains('show')) {
+                commonMenu.classList.remove('show');
+            }
+            if (adminMenu.classList.contains('show')) {
+                adminMenu.classList.remove('show');
+            }
         }
-      }
     };
-
-    // Toggle de menú desplegable
-    function toggleDropdown() {
-      const menu = document.getElementById('dropdown-menu');
-      menu.classList.toggle('show');
-    }
-  </script>
+</script>
 </body>
 </html>
