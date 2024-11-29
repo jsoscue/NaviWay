@@ -1,73 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Metadata básica -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naviway</title>
-  
-  <!-- Fuentes y estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
-  <!-- Scripts -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script type="module" src="../Firebase/registrareiniciar.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Naviway</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/map/style.css">
+    <link rel="stylesheet" href="stylesDropdown.css">
 </head>
 <body>
-  <!-- Encabezado -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">
-        <img src="/inicio/images/logo.png" alt="Naviway Logo" class="logo-image">
-      </div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="../about/about.html">About</a>
-        <a href="#">Service</a>
-        <a href="#">Contact</a>
-      </nav>
-      <div class="btn-container">
-        <!-- Botones para usuarios no autenticados -->
-        <button id="signup-btn" class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
-        <button id="signin-btn" class="btn signin" onclick="window.location.href='/inicio/signin.html';">Sign in</button>
-        
-        <!-- Perfil del usuario (oculto inicialmente) -->
-        <div id="profile-container" style="display: none;">
-          <img id="profile-picture" class="profile-picture" src="/inicio/images/user-profile.jpg" alt="Profile Picture" onclick="toggleDropdown()">
-          <div id="dropdown-menu" class="dropdown-menu">
-            <a href="../user/account.html">Account</a>
-            <a href="../vehicles/vehicles.html">Vehicles</a>
-            <a href="../map/map.html">Mapa</a>
-            <button class="logout-button" onclick="logout()">Salir</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  
-  <!-- Contenido principal -->
-  <div class="content">
-    <section class="home-section">
-      <div class="content-box">
-        <div class="text">
-          <h2>Seguimiento GPS Inteligente</h2>
-          <p>
-            Naviway es un sistema de seguimiento GPS avanzado que integra geolocalización y datos 
-            de tráfico en tiempo real para la gestión eficiente de rutas. Diseñado para empresas 
-            de transporte, permite monitorear flotas, optimizar trayectos y responder rápidamente 
-            a incidentes o congestiones, garantizando una movilidad más eficiente.
-          </p>
-        </div>
-        <div class="image">
-          <img src="/inicio/images/mapa.png" alt="Mapa de seguimiento GPS">
-        </div>
-      </div>
-    </section>
-  </div>
+    <div id="header-container">
+        <!-- Header para usuarios no autenticados -->
+        <header id="default-header" class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="/inicio/images/logo.png" alt="Naviway Logo" class="logo-image">
+                </div>
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about/about.html">About</a>
+                    <a href="#">Service</a>
+                    <a href="#">Contact</a>
+                </nav>
+                <div class="btn-container">
+                    <button id="signup-btn" class="btn signup" onclick="window.location.href='../register/signup.html';">Sign up</button>
+                    <button id="signin-btn" class="btn signin" onclick="window.location.href='/inicio/signin.html';">Sign in</button>
+                </div>
+            </div>
+        </header>
 
-  <!-- Pie de página -->
+        <!-- Header para usuarios autenticados -->
+        <header id="logged-in-header" class="navbar" style="display: none;">
+            <div class="container">
+                <div class="logo">
+                    <img src="inicio/images/logo.png" alt="Naviway Logo" class="logo-image">
+                </div>
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about/about.html">About</a>
+                    <a href="#">Service</a>
+                    <a href="#">Contact</a>
+                </nav>
+                <!-- Menú desplegable para usuarios comunes -->
+                <div class="user-profile" id="user-profile-common" onclick="toggleDropdown('dropdown-menu-common')">
+                    <img src="" alt="User Profile" class="profile-image" id="user-profile-image">
+                    <div id="dropdown-menu-common" class="dropdown-menu">
+                        <a href="user/account.html">Account</a>
+                        <a href="vehicles/vehicles.html">Vehicles</a>
+                        <a href="map/mapUser.html">Mapa</a>
+                        <button class="logout-button" onclick="logout()">Salir</button>
+                    </div>
+                </div>
+                <!-- Menú desplegable para administradores -->
+                <div class="user-profile" id="user-profile-admin" style="display: none;" onclick="toggleDropdown('dropdown-menu-admin')">
+                    <img src="" alt="User Profile" class="profile-image" id="user-profile-image-admin">
+                    <div id="dropdown-menu-admin" class="dropdown-menu">
+                        <a href="/Admin/user/accountAdmin.html">Account</a>
+                        <a href="/Admin/adminVehicles/admin.html">Vehicles</a>
+                        <a href="/Admin/map.html">Mapa</a>
+                        <a href="/Admin/rutas/rutas.js">Rutas</a>
+                        <button class="logout-button" onclick="logout()">Salir</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <section class="home-section">
+            <div class="content-box">
+                <div class="text">
+                    <h2>Seguimiento GPS Inteligente</h2>
+                    <p>
+                        Naviway es un sistema de seguimiento GPS avanzado que integra geolocalización y datos 
+                        de tráfico en tiempo real para la gestión eficiente de rutas. Diseñado para empresas 
+                        de transporte, permite monitorear flotas, optimizar trayectos, y responder rápidamente 
+                        a incidentes o congestiones, garantizando una movilidad más eficiente.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="/inicio/images/mapa.png" alt="Mapa de seguimiento GPS">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
   <footer class="footer">
     <div class="footer-logo">
       <img src="/inicio/images/logo.png" alt="Naviway Logo" class="footer-logo-image">
@@ -83,56 +104,72 @@
     </div>
   </footer>
 
-  <script type="module">
-    // Alternar visibilidad del menú desplegable
-    function toggleDropdown() {
-      const dropdownMenu = document.getElementById('dropdown-menu');
-      dropdownMenu.classList.toggle('show');
-    }
+    <script type="module">
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+        import { cerrar } from '../Firebase/registrareiniciar.js';
 
-    // Cerrar el menú desplegable si se hace clic fuera de él
-    window.onclick = function(event) {
-      const dropdownMenu = document.getElementById('dropdown-menu');
-      if (!event.target.matches('.profile-picture') && !event.target.matches('.dropdown-menu *')) {
-        if (dropdownMenu.classList.contains('show')) {
-          dropdownMenu.classList.remove('show');
+        async function loadHeader() {
+            const auth = getAuth();
+            const db = getFirestore();
+
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    localStorage.setItem('loggedIn', 'true');
+                    localStorage.setItem('userPhotoURL', user.photoURL || '/inicio/images/user-profile.jpg');
+                    document.getElementById('default-header').style.display = 'none';
+                    document.getElementById('logged-in-header').style.display = 'block';
+
+                    const userProfileImage = document.getElementById('user-profile-image');
+                    const userProfileImageAdmin = document.getElementById('user-profile-image-admin');
+                    userProfileImage.src = localStorage.getItem('userPhotoURL');
+                    userProfileImageAdmin.src = localStorage.getItem('userPhotoURL');
+
+                    const userDoc = await getDoc(doc(db, "drivers", user.uid));
+                    if (userDoc.exists() && userDoc.data().administrador) {
+                        document.getElementById('user-profile-common').style.display = 'none';
+                        document.getElementById('user-profile-admin').style.display = 'block';
+                    } else {
+                        document.getElementById('user-profile-common').style.display = 'block';
+                        document.getElementById('user-profile-admin').style.display = 'none';
+                    }
+                } else {
+                    localStorage.setItem('loggedIn', 'false');
+                    document.getElementById('default-header').style.display = 'block';
+                    document.getElementById('logged-in-header').style.display = 'none';
+                }
+            });
         }
-      }
-    };
 
-    // Importar funciones de Firebase
-    import { cerrar } from '../Firebase/registrareiniciar.js';
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
+        document.addEventListener('DOMContentLoaded', loadHeader);
+    </script>
 
-    const auth = getAuth();
-    const signupBtn = document.getElementById('signup-btn');
-    const signinBtn = document.getElementById('signin-btn');
-    const profileContainer = document.getElementById('profile-container');
-    const profilePicture = document.getElementById('profile-picture');
-    
-    // Verificar estado de autenticación
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // Usuario autenticado
-        signupBtn.style.display = 'none';
-        signinBtn.style.display = 'none';
-        profileContainer.style.display = 'block';
+    <script>
+        function logout() {
+            cerrar().then(() => {
+                localStorage.setItem('loggedIn', 'false');
+                localStorage.removeItem('userPhotoURL');
+                window.location.href = '../inicio/index.html';
+            });
+        }
 
-        // Cargar imagen y configuración de usuario
-        profilePicture.src = user.photoURL || '/inicio/images/user-profile.jpg';
-      } else {
-        // Usuario no autenticado
-        signupBtn.style.display = 'inline-block';
-        signinBtn.style.display = 'inline-block';
-        profileContainer.style.display = 'none';
-      }
-    });
+        function toggleDropdown(menuId) {
+            const menu = document.getElementById(menuId);
+            menu.classList.toggle('show');
+        }
 
-    // Cerrar sesión
-    async function logout() {
-      await cerrar();
-      window.location.href = 'index.html';
-    }
-  </script>
+        window.onclick = function(event) {
+            const commonMenu = document.getElementById('dropdown-menu-common');
+            const adminMenu = document.getElementById('dropdown-menu-admin');
+            if (!event.target.matches('.profile-image') && !event.target.matches('.dropdown-menu') && !event.target.matches('.dropdown-menu *')) {
+                if (commonMenu.classList.contains('show')) {
+                    commonMenu.classList.remove('show');
+                }
+                if (adminMenu.classList.contains('show')) {
+                    adminMenu.classList.remove('show');
+                }
+            }
+        };
+    </script>
 </body>
 </html>
