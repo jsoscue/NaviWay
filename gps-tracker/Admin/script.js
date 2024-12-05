@@ -2,7 +2,7 @@
 import { saveLocationData } from '../Firebase/realtime.js';  // Asegúrate de que la ruta del archivo sea correcta
 
 // Variables globales para el mapa y la simulación
-let map, marker, trafficLayer, directionsService, directionsRenderer;
+let map, marker, marker2, trafficLayer, directionsService, directionsRenderer;
 let routePoints = [];
 let routeIndex = 0;
 let speed = 0;
@@ -12,8 +12,10 @@ let stopDuration = 0;
 let hardBrakes = 0;
 let routeDeviations = 0;
 let kmTraveled = 0;
-let placas = "ABC123";  // Ejemplo de placas
-let orden = "001";  // Ejemplo de número de orden
+let placas = "ABC123";  // Ejemplo de placas para el primer vehículo
+let orden = "001";  // Ejemplo de número de orden para el primer vehículo
+let placas2 = "XYZ789";  // Ejemplo de placas para el segundo vehículo
+let orden2 = "002";  // Ejemplo de número de orden para el segundo vehículo
 let routeName = "";  // Nombre de la ruta
 let isReturning = false;  // Indica si el bus está en el camino de regreso
 
@@ -29,9 +31,20 @@ function initMap() {
     trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap(map);  // Activa la capa de tráfico
 
-    // Crear un marcador en una posición específica
+    // Crear el primer marcador en una posición específica
     marker = new google.maps.Marker({
         position: { lat: 4.7061, lng: -74.2306 },  // Coordenadas de Mosquera
+        map: map,
+        icon: {
+            url: "https://img.icons8.com/color/48/bus.png",
+            scaledSize: new google.maps.Size(40, 40),
+        },
+        title: "Bus en Movimiento",
+    });
+
+    // Crear el segundo marcador en una posición específica (200 metros al norte del primero)
+    marker2 = new google.maps.Marker({
+        position: { lat: 4.7080, lng: -74.2306 },  // Coordenadas de Mosquera, 200 metros al norte
         map: map,
         icon: {
             url: "https://img.icons8.com/color/48/bus.png",
@@ -47,7 +60,7 @@ function initMap() {
 
     const infoWindow = new google.maps.InfoWindow();
 
-    // Añadir listener para mostrar información del vehículo al hacer clic en el marcador
+    // Añadir listener para mostrar información del vehículo al hacer clic en el primer marcador
     marker.addListener("click", () => {
         const infoContent = `
             <div class="info-window">
@@ -66,6 +79,27 @@ function initMap() {
         `;
         infoWindow.setContent(infoContent);
         infoWindow.open(map, marker);
+    });
+
+    // Añadir listener para mostrar información del vehículo al hacer clic en el segundo marcador
+    marker2.addListener("click", () => {
+        const infoContent = `
+            <div class="info-window">
+                <h3>Datos del Vehículo</h3>
+                <p><b>Placas:</b> ${placas2}</p>
+                <p><b>Número de Orden:</b> ${orden2}</p>
+                <p><b>Velocidad:</b> ${speed} km/h</p>
+                <p><b>Paradas realizadas:</b> ${stops}</p>
+                <p><b>Cinturón puesto:</b> ${seatBelt ? "Sí" : "No"}</p>
+                <p><b>Duración última parada:</b> ${stopDuration} minutos</p>
+                <p><b>Alertas por frenadas bruscas:</b> ${hardBrakes}</p>
+                <p><b>Alertas por desvíos de ruta:</b> ${routeDeviations}</p>
+                <p><b>Número de km recorridos en el día:</b> ${kmTraveled} km</p>
+                <p><b>Ruta:</b> ${routeName}</p>
+            </div>
+        `;
+        infoWindow.setContent(infoContent);
+        infoWindow.open(map, marker2);
     });
 
     // Verificar si hay una ruta en la URL
@@ -112,6 +146,22 @@ function startSimulation() {
             routeIndex = 0;  // Reinicia la ruta cuando se completa
         }
     }, 2000);  // Intervalo de 2 segundos para la actualización de la posición
+
+    // Iniciar el segundo vehículo 15 segundos después
+    setTimeout(() => {
+        setInterval(() => {
+            if (routeIndex < routePoints.length - 1) {
+                const nextPoint = routePoints[++routeIndex];
+                marker2.setPosition(nextPoint);
+                const lat = nextPoint.lat();
+                const lng = nextPoint.lng();
+                saveLocationData(lat, lng);  // Guarda los datos de ubicación en Firebase
+                simulateData();
+            } else {
+                routeIndex = 0;  // Reinicia la ruta cuando se completa
+            }
+        }, 2000);  // Intervalo de 2 segundos para la actualización de la posición
+    }, 15000);  // 15 segundos de retraso para el segundo vehículo
 }
 
 // Función para simular los datos del bus
